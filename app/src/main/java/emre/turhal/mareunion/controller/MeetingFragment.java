@@ -10,10 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
 import java.util.List;
 
 import emre.turhal.mareunion.R;
 import emre.turhal.mareunion.di.DI;
+import emre.turhal.mareunion.events.DeleteMeetingEvent;
 import emre.turhal.mareunion.model.Meeting;
 import emre.turhal.mareunion.service.MeetingApiService;
 
@@ -53,6 +57,7 @@ public class MeetingFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -64,8 +69,13 @@ public class MeetingFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
+        EventBus.getDefault().unregister(this);
     }
 
-    // subrscribe
+    @Subscribe
+    public void onDeleteMeeting(DeleteMeetingEvent event){
+        mApiService.deleteMeeting(event.meeting);
+        initList();
+    }
 }
 
