@@ -9,11 +9,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import emre.turhal.mareunion.R;
 import emre.turhal.mareunion.di.DI;
+import emre.turhal.mareunion.model.Meeting;
 import emre.turhal.mareunion.service.MeetingApiService;
 
 public class AddMeetingActivity extends AppCompatActivity {
@@ -24,8 +27,8 @@ public class AddMeetingActivity extends AppCompatActivity {
     TextInputLayout placeInput;
     @BindView(R.id.objectLyt)
     TextInputLayout objectInput;
-   // @BindView(R.id.create)
-   // MaterialButton addButton;
+    @BindView(R.id.create)
+    Button addButton;
 
     private MeetingApiService mApiService;
 
@@ -63,23 +66,23 @@ public class AddMeetingActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                //addButton.setEnabled(s.length() > 0);
+                addButton.setEnabled(s.length() > 0);
             }
         });
 
     }
 
-    //@OnClick(R.id.create)
-    //void addMeeting(){
-    //    Meeting meeting = new Meeting(
-     //           System.currentTimeMillis(),
-    //            hourInput.getEditText().getText().toString(),
-    //            placeInput.getEditText().getText().toString(),
-    //            objectInput.getEditText().getText().toString()
-    //    );
-    //    mApiService.createMeeting(meeting);
-    //    finish();
-    //}
+    @OnClick(R.id.create)
+    void addMeeting(){
+        Meeting meeting = new Meeting(
+                System.currentTimeMillis(),
+                hourInput.getEditText().getText().toString(),
+                placeInput.getEditText().getText().toString(),
+                objectInput.getEditText().getText().toString()
+        );
+        mApiService.createMeeting(meeting);
+        finish();
+    }
 
     public static void navigate(FragmentActivity activity) {
         Intent intent = new Intent(activity, AddMeetingActivity.class);
