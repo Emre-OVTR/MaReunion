@@ -10,8 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MaReunion">
-        <activity android:name=".controller.AddMeetingActivity"/>
-        <activity android:name=".controller.MainActivity">
+        <activity android:name=".controller.AddMeetingActivity"
+            android:label="Ajouter une Reunion"/>
+        <activity android:name=".controller.MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

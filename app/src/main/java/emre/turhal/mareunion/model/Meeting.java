@@ -12,6 +12,8 @@ public class Meeting {
     private String object;
 
 
+
+
     public Meeting(long id, String hour, String place, String object) {
         this.id = id;
         this.hour = hour;
