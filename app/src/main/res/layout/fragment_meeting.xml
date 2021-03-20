@@ -9,9 +9,10 @@
     android:orientation="vertical">
 
 
-    <ImageView
-        android:id="@+id/item_list_avatar"
-        android:layout_width="50dp"
+
+    <TextView
+        android:id="@+id/item_list_date"
+        android:layout_width="80dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="10dp"
@@ -25,10 +26,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:inputType="time"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/item_list_avatar"
-        app:layout_constraintStart_toEndOf="@+id/item_list_avatar"
-        app:layout_constraintTop_toTopOf="@+id/item_list_avatar" />
+        app:layout_constraintStart_toEndOf="@id/item_list_date"
+        app:layout_constraintTop_toTopOf="@id/item_list_date" />
 
     <TextView
         android:id="@+id/item_list_place"
@@ -60,5 +61,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/item_list_object"
         app:srcCompat="@drawable/ic_delete_black_24dp" />
+
+    <TextView
+        android:id="@+id/item_list_participant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/item_list_date"
+        app:layout_constraintStart_toEndOf="@+id/item_list_date" />
+
+    <TextView
+        android:id="@+id/item_list_participant2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/item_list_participant"
+        app:layout_constraintStart_toEndOf="@+id/item_list_participant" />
+
 
 </android.support.constraint.ConstraintLayout>

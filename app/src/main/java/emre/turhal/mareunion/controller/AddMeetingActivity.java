@@ -2,6 +2,7 @@ package emre.turhal.mareunion.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
@@ -9,7 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,12 +24,19 @@ import emre.turhal.mareunion.service.MeetingApiService;
 
 public class AddMeetingActivity extends AppCompatActivity {
 
+
+    @BindView(R.id.dateLyt)
+    TextInputLayout dateInput;
     @BindView(R.id.hourLyt)
     TextInputLayout hourInput;
     @BindView(R.id.placeLyt)
     TextInputLayout placeInput;
     @BindView(R.id.objectLyt)
     TextInputLayout objectInput;
+    @BindView(R.id.participant)
+    EditText addParticipant;
+    @BindView(R.id.participant2)
+    EditText addParticipant2;
     @BindView(R.id.create)
     Button addButton;
 
@@ -76,13 +86,18 @@ public class AddMeetingActivity extends AppCompatActivity {
     void addMeeting(){
         Meeting meeting = new Meeting(
                 System.currentTimeMillis(),
+                dateInput.getEditText().getText().toString(),
                 hourInput.getEditText().getText().toString(),
                 placeInput.getEditText().getText().toString(),
-                objectInput.getEditText().getText().toString()
+                objectInput.getEditText().getText().toString(),
+                addParticipant.getEditableText().toString(),
+                addParticipant2.getEditableText().toString()
+
         );
         mApiService.createMeeting(meeting);
         finish();
     }
+
 
     public static void navigate(FragmentActivity activity) {
         Intent intent = new Intent(activity, AddMeetingActivity.class);

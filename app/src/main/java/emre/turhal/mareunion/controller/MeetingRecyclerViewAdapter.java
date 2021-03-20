@@ -37,9 +37,12 @@ public class MeetingRecyclerViewAdapter extends RecyclerView.Adapter<MeetingRecy
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         Meeting meeting = mMeetings.get(position);
+        holder.mMeetingDate.setText(meeting.getDate());
         holder.mMeetingHour.setText(meeting.getHour());
         holder.mMeetingPlace.setText(meeting.getPlace());
         holder.mMeetingObject.setText(meeting.getObject());
+        holder.mParticipant.setText(meeting.getParticipant());
+        holder.mParticipant2.setText(meeting.getParticipant2());
         //Glide.with(holder.mNeighbourAvatar.getContext())
                 //.load(neighbour.getAvatarUrl())
                 //.apply(RequestOptions.circleCropTransform())
@@ -68,6 +71,12 @@ public class MeetingRecyclerViewAdapter extends RecyclerView.Adapter<MeetingRecy
         public TextView mMeetingObject;
         @BindView(R.id.item_list_delete_btn)
         public ImageButton mDeleteButton;
+        @BindView(R.id.item_list_date)
+        public TextView mMeetingDate;
+        @BindView(R.id.item_list_participant)
+        public TextView mParticipant;
+        @BindView(R.id.item_list_participant2)
+        public TextView mParticipant2;
 
 
         public ViewHolder(View view) {
