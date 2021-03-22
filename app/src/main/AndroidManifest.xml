@@ -11,9 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaReunion">
         <activity android:name=".controller.AddMeetingActivity"
-            android:label="Ajouter une Reunion"/>
-        <activity android:name=".controller.MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:label="Ajouter une Reunion" />
+        <activity android:name=".controller.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

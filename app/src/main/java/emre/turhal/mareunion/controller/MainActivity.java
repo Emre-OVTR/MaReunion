@@ -46,13 +46,22 @@ MainActivity extends AppCompatActivity {
         //return super.onCreateOptionsMenu(menu);
     }
 
-    @Override
-    public boolean onOptionsItemSelected( MenuItem item) {
-        return super.onOptionsItemSelected(item);
-    }
 
     @OnClick(R.id.add_meeting)
-    void addNeighbour() {
+    void addMeeting() {
         AddMeetingActivity.navigate(this);
     }
 }
+
+// afficher les mail que dans un seul textview passer une liste de participat en parametre de mEeting
+
+    // android:ellipsize="end" ajouter dans textview pour afficher les mails
+
+// filtrer par heure et par lieu la liste des meetings
+
+
+
+
+//https://developer.android.com/guide/topics/ui/dialogs#AddingAList
+
+

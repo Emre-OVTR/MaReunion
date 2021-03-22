@@ -1,18 +1,29 @@
 package emre.turhal.mareunion.controller;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.NumberPicker;
+import android.widget.TimePicker;
+
+import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,31 +36,40 @@ import emre.turhal.mareunion.service.MeetingApiService;
 public class AddMeetingActivity extends AppCompatActivity {
 
 
-    @BindView(R.id.dateLyt)
-    TextInputLayout dateInput;
-    @BindView(R.id.hourLyt)
-    TextInputLayout hourInput;
-    @BindView(R.id.placeLyt)
-    TextInputLayout placeInput;
-    @BindView(R.id.objectLyt)
-    TextInputLayout objectInput;
-    @BindView(R.id.participant)
-    EditText addParticipant;
+    @BindView(R.id.my_toolbar2)
+    Toolbar   mToolbar;
+    @BindView(R.id.in_date)
+    EditText txtDate;
+    @BindView(R.id.in_time)
+    EditText txtTime;
+    @BindView(R.id.in_place)
+    EditText txtPlace;
+    @BindView(R.id.in_comment)
+    EditText txtComment;
+    @BindView(R.id.participant1)
+    EditText txtParticipant1;
     @BindView(R.id.participant2)
-    EditText addParticipant2;
-    @BindView(R.id.create)
-    Button addButton;
+    EditText txtParticipant2;
+    @BindView(R.id.participant3)
+    EditText txtParticipant3;
+    @BindView(R.id.participant4)
+    EditText txtParticipant4;
+
 
     private MeetingApiService mApiService;
+    private int mYear, mMonth, mDay, mHour, mMinute;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_meeting);
         ButterKnife.bind(this);
+        setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mApiService = DI.getMeetingApiService();
-        init();
+
+
 
     }
 
@@ -63,35 +83,19 @@ public class AddMeetingActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void init() {
-
-        hourInput.getEditText().addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                addButton.setEnabled(s.length() > 0);
-            }
-        });
-
-    }
 
     @OnClick(R.id.create)
     void addMeeting(){
         Meeting meeting = new Meeting(
                 System.currentTimeMillis(),
-                dateInput.getEditText().getText().toString(),
-                hourInput.getEditText().getText().toString(),
-                placeInput.getEditText().getText().toString(),
-                objectInput.getEditText().getText().toString(),
-                addParticipant.getEditableText().toString(),
-                addParticipant2.getEditableText().toString()
+                txtDate.getText().toString(),
+                txtTime.getText().toString(),
+                txtPlace.getText().toString(),
+                txtComment.getText().toString(),
+                txtParticipant1.getText().toString(),
+                txtParticipant2.getText().toString(),
+                txtParticipant3.getText().toString(),
+                txtParticipant4.getText().toString()
 
         );
         mApiService.createMeeting(meeting);
@@ -102,5 +106,61 @@ public class AddMeetingActivity extends AppCompatActivity {
     public static void navigate(FragmentActivity activity) {
         Intent intent = new Intent(activity, AddMeetingActivity.class);
         ActivityCompat.startActivity(activity, intent, null);
+    }
+
+
+    public void showDatePicker(View view){
+
+        final Calendar c = Calendar.getInstance();
+        mYear = c.get(Calendar.YEAR);
+        mMonth = c.get(Calendar.MONTH);
+        mDay = c.get(Calendar.DAY_OF_MONTH);
+
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                new DatePickerDialog.OnDateSetListener() {
+
+                    @Override
+                    public void onDateSet(DatePicker view, int year,
+                                          int monthOfYear, int dayOfMonth) {
+
+                        txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+
+                    }
+                }, mYear, mMonth, mDay);
+        datePickerDialog.show();
+
+    }
+
+    public void  showTimePicker(View view){
+        final Calendar c = Calendar.getInstance();
+        mHour = c.get(Calendar.HOUR_OF_DAY);
+        mMinute = c.get(Calendar.MINUTE);
+
+        // Launch Time Picker Dialog
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this,
+                new TimePickerDialog.OnTimeSetListener() {
+
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay,
+                                          int minute) {
+
+                        txtTime.setText(hourOfDay + ":" + minute);
+                    }
+                }, mHour, mMinute, true);
+        timePickerDialog.show();
+
+    }
+
+    public void onValueChange(NumberPicker numberPicker, int oldVal, int newVal) {
+
+        txtPlace.setText(NumberPickerDialog.pickerVals[numberPicker.getValue()]);
+
+    }
+
+    public void showNumberPicker(View view){
+        NumberPickerDialog newFragment = new NumberPickerDialog();
+        newFragment.setValueChangeListener(this::onValueChange);
+        newFragment.show(getSupportFragmentManager(), "time picker");
     }
 }

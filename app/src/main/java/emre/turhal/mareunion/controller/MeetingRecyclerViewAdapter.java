@@ -19,7 +19,7 @@ import emre.turhal.mareunion.model.Meeting;
 
 public class MeetingRecyclerViewAdapter extends RecyclerView.Adapter<MeetingRecyclerViewAdapter.ViewHolder> {
 
-    private final List<Meeting> mMeetings;
+    private  List<Meeting> mMeetings;
 
 
     public MeetingRecyclerViewAdapter(List<Meeting> items) {
@@ -41,8 +41,10 @@ public class MeetingRecyclerViewAdapter extends RecyclerView.Adapter<MeetingRecy
         holder.mMeetingHour.setText(meeting.getHour());
         holder.mMeetingPlace.setText(meeting.getPlace());
         holder.mMeetingObject.setText(meeting.getObject());
-        holder.mParticipant.setText(meeting.getParticipant());
+        holder.mParticipant1.setText(meeting.getParticipant1());
         holder.mParticipant2.setText(meeting.getParticipant2());
+        holder.mParticipant3.setText(meeting.getParticipant3());
+        holder.mParticipant4.setText(meeting.getParticipant4());
         //Glide.with(holder.mNeighbourAvatar.getContext())
                 //.load(neighbour.getAvatarUrl())
                 //.apply(RequestOptions.circleCropTransform())
@@ -73,10 +75,14 @@ public class MeetingRecyclerViewAdapter extends RecyclerView.Adapter<MeetingRecy
         public ImageButton mDeleteButton;
         @BindView(R.id.item_list_date)
         public TextView mMeetingDate;
-        @BindView(R.id.item_list_participant)
-        public TextView mParticipant;
+        @BindView(R.id.item_list_participant1)
+        public TextView mParticipant1;
         @BindView(R.id.item_list_participant2)
         public TextView mParticipant2;
+        @BindView(R.id.item_list_participant3)
+        public TextView mParticipant3;
+        @BindView(R.id.item_list_participant4)
+        public TextView mParticipant4;
 
 
         public ViewHolder(View view) {
@@ -84,6 +90,17 @@ public class MeetingRecyclerViewAdapter extends RecyclerView.Adapter<MeetingRecy
             ButterKnife.bind(this, view);
 
         }
+    }
+
+
+    public void updateMeeting(List<Meeting> newMeetings) {
+
+        mMeetings = newMeetings;
+
+
+
+
+
     }
 
 

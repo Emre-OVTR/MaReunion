@@ -63,7 +63,7 @@
         app:srcCompat="@drawable/ic_delete_black_24dp" />
 
     <TextView
-        android:id="@+id/item_list_participant"
+        android:id="@+id/item_list_participant1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -75,8 +75,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/item_list_participant"
-        app:layout_constraintStart_toEndOf="@+id/item_list_participant" />
+        app:layout_constraintBottom_toBottomOf="@+id/item_list_participant1"
+        app:layout_constraintStart_toEndOf="@+id/item_list_participant1" />
+
+    <TextView
+        android:id="@+id/item_list_participant3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/item_list_participant2"
+        app:layout_constraintStart_toEndOf="@+id/item_list_participant2" />
+
+    <TextView
+        android:id="@+id/item_list_participant4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/item_list_participant3"
+        app:layout_constraintStart_toEndOf="@+id/item_list_participant3" />
 
 
 </android.support.constraint.ConstraintLayout>

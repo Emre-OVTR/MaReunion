@@ -4,144 +4,207 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".controller.AddMeetingActivity">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/appbar"
+        tools:ignore="MissingConstraints">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/my_toolbar2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#2196F3">
+
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/first_linear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@id/appbar"
+        app:layout_constraintTop_toBottomOf="@id/appbar"
+        >
+
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:id="@+id/date_btn"
+                android:background="@color/white"
+                android:onClick="showDatePicker"
+                android:src="@drawable/ic_outline_date_range_24"/>
+
+            <EditText
+                android:id="@+id/in_date"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:hint="Select a Date"
+                android:focusable="false"
+                android:inputType="date" />
+
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:id="@+id/time_btn"
+                android:onClick="showTimePicker"
+                android:background="@color/white"
+                android:src="@drawable/ic_outline_access_time_24"/>
+
+            <EditText
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/in_time"
+                android:hint="Select a Time"
+                android:focusable="false"
+                android:inputType="time"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/second_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@id/first_linear"
+        app:layout_constraintTop_toBottomOf="@id/first_linear">
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:id="@+id/button"
+            android:src="@drawable/ic_outline_meeting_room_24"
+            android:onClick="showNumberPicker"
+            android:background="@color/white" />
+
+        <EditText
+            android:id="@+id/in_place"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:hint="@string/select_a_room" />
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/third_linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/second_linear">
+        tools:ignore="MissingConstraints"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintStart_toStartOf="@id/second_linear"
+        app:layout_constraintTop_toBottomOf="@id/second_linear"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_outline_person_outline_24"/>
 
         <EditText
-            android:id="@+id/participant"
+            android:id="@+id/participant1"
             android:layout_width="150dp"
-            android:layout_margin="20dp"
             android:layout_height="wrap_content"
-            android:hint="Participant 1"
-            android:inputType="textEmailAddress"/>
+            android:inputType="textEmailAddress"
+            android:hint="Enter an Email"/>
+
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_outline_person_outline_24"/>
 
         <EditText
             android:id="@+id/participant2"
             android:layout_width="150dp"
-            android:layout_margin="20dp"
             android:layout_height="wrap_content"
-            android:hint="Participant 2"
-            android:inputType="textEmailAddress" />
-
-    </LinearLayout>
+            android:hint="Enter an Email"/>
 
 
-    <LinearLayout
-        android:id="@+id/first_linear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="18dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/dateLyt"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp">
-
-            <EditText
-                android:id="@+id/editTextDate3"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="date"
-                android:inputType="date" />
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/hourLyt"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp">
-
-            <!-- <android.support.design.widget.TextInputEditText
-            android:id="@+id/hour"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Hour"
-            android:inputType="textPersonName" />   -->
-
-            <EditText
-                android:id="@+id/hour"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:hint="hour"
-                android:inputType="time" />
-        </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/fourth_linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/second_linear"
-        app:layout_constraintTop_toBottomOf="@id/first_linear"
-        android:layout_margin="20dp"
-        android:orientation="horizontal"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintStart_toStartOf="@id/third_linear"
+        app:layout_constraintTop_toBottomOf="@id/third_linear"
+        android:orientation="horizontal">
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/objectLyt"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="wrap_content"
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_outline_person_outline_24"/>
+
+        <EditText
+            android:id="@+id/participant3"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp">
+            android:hint="Enter an Email"/>
 
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/object"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="7"
-                android:hint="Object"
-                android:inputType="text" />
 
-        </android.support.design.widget.TextInputLayout>
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_outline_person_outline_24"/>
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/placeLyt"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/participant4"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/place"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="Place" />
-
-        </android.support.design.widget.TextInputLayout>
-
+            android:hint="Enter an Email"/>
 
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/last_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintStart_toStartOf="@id/fourth_linear"
+        app:layout_constraintTop_toBottomOf="@id/fourth_linear"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_outline_add_comment_24"/>
+
+        <EditText
+            android:id="@+id/in_comment"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:inputType="textCapWords"
+            android:hint="Add a Comment"/>
+    </LinearLayout>
+
+
 
     <Button
         android:id="@+id/create"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="270dp"
-        android:layout_marginStart="108dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="70dp"
+        android:backgroundTint="#CDDC39"
         android:padding="30dp"
         android:text="Add Meeting"
-        app:layout_constraintTop_toBottomOf="@id/second_linear"
-        app:layout_constraintStart_toStartOf="@id/second_linear"
-        tools:ignore="MissingConstraints"
-         />
-
+        app:layout_constraintTop_toBottomOf="@id/last_linear"
+        app:layout_constraintStart_toStartOf="@id/last_linear"
+        tools:ignore="MissingConstraints" />
 </android.support.constraint.ConstraintLayout>

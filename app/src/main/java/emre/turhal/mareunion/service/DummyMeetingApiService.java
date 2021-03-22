@@ -26,4 +26,11 @@ public class DummyMeetingApiService implements MeetingApiService{
         meetings.add(meeting);
 
     }
+
+    @Override
+    public List<Meeting> filterMeetings(String filter, String type) {
+
+    return meetings;
+
+    }
 }
