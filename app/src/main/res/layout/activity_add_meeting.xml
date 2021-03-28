@@ -33,21 +33,6 @@
         app:layout_constraintTop_toBottomOf="@id/appbar"
         >
 
-            <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:id="@+id/date_btn"
-                android:background="@color/white"
-                android:onClick="showDatePicker"
-                android:src="@drawable/ic_outline_date_range_24"/>
-
-            <EditText
-                android:id="@+id/in_date"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:hint="Select a Date"
-                android:focusable="false"
-                android:inputType="date" />
 
             <ImageButton
                 android:layout_width="50dp"
@@ -64,17 +49,7 @@
                 android:hint="Select a Time"
                 android:focusable="false"
                 android:inputType="time"/>
-    </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/second_linear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="@id/first_linear"
-        app:layout_constraintTop_toBottomOf="@id/first_linear">
 
         <ImageButton
             android:layout_width="50dp"
@@ -95,14 +70,14 @@
 
 
     <LinearLayout
-        android:id="@+id/third_linear"
+        android:id="@+id/second_linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints"
         android:layout_marginTop="50dp"
         android:layout_marginLeft="10dp"
-        app:layout_constraintStart_toStartOf="@id/second_linear"
-        app:layout_constraintTop_toBottomOf="@id/second_linear"
+        app:layout_constraintStart_toStartOf="@id/first_linear"
+        app:layout_constraintTop_toBottomOf="@id/first_linear"
         android:orientation="horizontal">
 
         <ImageView
@@ -133,14 +108,14 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/fourth_linear"
+        android:id="@+id/third_linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints"
         android:layout_marginTop="50dp"
         android:layout_marginLeft="10dp"
-        app:layout_constraintStart_toStartOf="@id/third_linear"
-        app:layout_constraintTop_toBottomOf="@id/third_linear"
+        app:layout_constraintStart_toStartOf="@id/second_linear"
+        app:layout_constraintTop_toBottomOf="@id/second_linear"
         android:orientation="horizontal">
 
         <ImageView
@@ -175,8 +150,8 @@
         tools:ignore="MissingConstraints"
         android:layout_marginTop="50dp"
         android:layout_marginLeft="10dp"
-        app:layout_constraintStart_toStartOf="@id/fourth_linear"
-        app:layout_constraintTop_toBottomOf="@id/fourth_linear"
+        app:layout_constraintStart_toStartOf="@id/third_linear"
+        app:layout_constraintTop_toBottomOf="@id/third_linear"
         android:orientation="horizontal">
 
         <ImageView

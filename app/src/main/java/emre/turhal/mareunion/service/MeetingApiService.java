@@ -12,7 +12,7 @@ public interface MeetingApiService {
 
     void createMeeting (Meeting meeting);
 
-    List<Meeting> filterMeetings(String filter, String type);
+    List<Meeting> filterMeetings (String filter, String type);
 
 
 }

@@ -1,5 +1,8 @@
 package emre.turhal.mareunion.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import emre.turhal.mareunion.model.Meeting;
@@ -29,8 +32,6 @@ public class DummyMeetingApiService implements MeetingApiService{
 
     @Override
     public List<Meeting> filterMeetings(String filter, String type) {
-
-    return meetings;
-
+        return null;
     }
 }

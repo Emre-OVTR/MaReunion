@@ -24,6 +24,7 @@ import android.widget.NumberPicker;
 import android.widget.TimePicker;
 
 import java.util.Calendar;
+import java.util.Collections;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,8 +39,7 @@ public class AddMeetingActivity extends AppCompatActivity {
 
     @BindView(R.id.my_toolbar2)
     Toolbar   mToolbar;
-    @BindView(R.id.in_date)
-    EditText txtDate;
+
     @BindView(R.id.in_time)
     EditText txtTime;
     @BindView(R.id.in_place)
@@ -57,7 +57,7 @@ public class AddMeetingActivity extends AppCompatActivity {
 
 
     private MeetingApiService mApiService;
-    private int mYear, mMonth, mDay, mHour, mMinute;
+    private int mHour, mMinute;
 
 
     @Override
@@ -88,14 +88,14 @@ public class AddMeetingActivity extends AppCompatActivity {
     void addMeeting(){
         Meeting meeting = new Meeting(
                 System.currentTimeMillis(),
-                txtDate.getText().toString(),
+
                 txtTime.getText().toString(),
                 txtPlace.getText().toString(),
-                txtComment.getText().toString(),
-                txtParticipant1.getText().toString(),
-                txtParticipant2.getText().toString(),
-                txtParticipant3.getText().toString(),
-                txtParticipant4.getText().toString()
+                txtComment.getText().toString()
+                //Collections.singletonList(txtParticipant1.getText().toString())
+                //txtParticipant2.getText().toString(),
+                //txtParticipant3.getText().toString(),
+                //txtParticipant4.getText().toString()
 
         );
         mApiService.createMeeting(meeting);
@@ -109,28 +109,7 @@ public class AddMeetingActivity extends AppCompatActivity {
     }
 
 
-    public void showDatePicker(View view){
-
-        final Calendar c = Calendar.getInstance();
-        mYear = c.get(Calendar.YEAR);
-        mMonth = c.get(Calendar.MONTH);
-        mDay = c.get(Calendar.DAY_OF_MONTH);
-
-
-        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
-                new DatePickerDialog.OnDateSetListener() {
-
-                    @Override
-                    public void onDateSet(DatePicker view, int year,
-                                          int monthOfYear, int dayOfMonth) {
-
-                        txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
-
-                    }
-                }, mYear, mMonth, mDay);
-        datePickerDialog.show();
-
-    }
+    
 
     public void  showTimePicker(View view){
         final Calendar c = Calendar.getInstance();

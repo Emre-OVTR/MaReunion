@@ -1,5 +1,6 @@
 package emre.turhal.mareunion.controller;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -10,6 +11,7 @@ import android.widget.NumberPicker;
 public class NumberPickerDialog extends DialogFragment {
     private NumberPicker.OnValueChangeListener valueChangeListener;
     public static String[] pickerVals = new String[] {"Salle A", "Salle B", "Sale C", "Salle D", "Salle E", "Salle F", "Salle G", "Salle H", "Salle I", "Salle J"};
+
 
 
 

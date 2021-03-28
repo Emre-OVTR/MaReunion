@@ -10,13 +10,14 @@
 
 
 
-    <TextView
-        android:id="@+id/item_list_date"
-        android:layout_width="80dp"
+    <ImageView
+        android:id="@+id/item_list_color"
+        android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,8 +29,8 @@
         android:layout_marginStart="24dp"
         android:inputType="time"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/item_list_date"
-        app:layout_constraintTop_toTopOf="@id/item_list_date" />
+        app:layout_constraintStart_toEndOf="@id/item_list_color"
+        app:layout_constraintTop_toTopOf="@id/item_list_color" />
 
     <TextView
         android:id="@+id/item_list_place"
@@ -67,8 +68,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/item_list_date"
-        app:layout_constraintStart_toEndOf="@+id/item_list_date" />
+        app:layout_constraintBottom_toBottomOf="@+id/item_list_color"
+        app:layout_constraintStart_toEndOf="@+id/item_list_color" />
 
     <TextView
         android:id="@+id/item_list_participant2"
