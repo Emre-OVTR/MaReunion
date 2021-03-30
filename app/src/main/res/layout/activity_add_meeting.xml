@@ -86,7 +86,7 @@
             android:src="@drawable/ic_outline_person_outline_24"/>
 
         <EditText
-            android:id="@+id/participant1"
+            android:id="@+id/participant"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
@@ -102,7 +102,8 @@
             android:id="@+id/participant2"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:hint="Enter an Email"/>
+            android:hint="Enter an Email"
+            tools:ignore="DuplicateIds" />
 
 
     </LinearLayout>
@@ -127,7 +128,8 @@
             android:id="@+id/participant3"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:hint="Enter an Email"/>
+            android:hint="Enter an Email"
+            tools:ignore="DuplicateIds" />
 
 
         <ImageView
@@ -139,7 +141,8 @@
             android:id="@+id/participant4"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:hint="Enter an Email"/>
+            android:hint="Enter an Email"
+            tools:ignore="DuplicateIds" />
 
     </LinearLayout>
 

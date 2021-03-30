@@ -1,8 +1,6 @@
 package emre.turhal.mareunion.service;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 import java.util.List;
 
 import emre.turhal.mareunion.model.Meeting;

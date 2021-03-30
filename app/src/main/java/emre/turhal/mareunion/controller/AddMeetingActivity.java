@@ -1,5 +1,6 @@
 package emre.turhal.mareunion.controller;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -23,8 +24,11 @@ import android.widget.ImageButton;
 import android.widget.NumberPicker;
 import android.widget.TimePicker;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,8 +50,10 @@ public class AddMeetingActivity extends AppCompatActivity {
     EditText txtPlace;
     @BindView(R.id.in_comment)
     EditText txtComment;
-    @BindView(R.id.participant1)
-    EditText txtParticipant1;
+
+    @BindView(R.id.participant)
+    EditText txtParticipant;
+
     @BindView(R.id.participant2)
     EditText txtParticipant2;
     @BindView(R.id.participant3)
@@ -58,6 +64,7 @@ public class AddMeetingActivity extends AppCompatActivity {
 
     private MeetingApiService mApiService;
     private int mHour, mMinute;
+    //public EditText[] participants22 = new EditText[]{txtParticipant, txtParticipant2, txtParticipant3, txtParticipant4};
 
 
     @Override
@@ -68,6 +75,9 @@ public class AddMeetingActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mApiService = DI.getMeetingApiService();
+
+
+
 
 
 
@@ -84,23 +94,27 @@ public class AddMeetingActivity extends AppCompatActivity {
     }
 
 
-    @OnClick(R.id.create)
-    void addMeeting(){
-        Meeting meeting = new Meeting(
-                System.currentTimeMillis(),
+    //@OnClick(R.id.create)
+    //void addMeeting(){
 
-                txtTime.getText().toString(),
-                txtPlace.getText().toString(),
-                txtComment.getText().toString()
-                //Collections.singletonList(txtParticipant1.getText().toString())
-                //txtParticipant2.getText().toString(),
+
+      //  Meeting meeting = new Meeting(System.currentTimeMillis(),
+        //        txtTime.getText().toString(),
+          //      txtPlace.getText().toString(),
+            //    txtComment.getText().toString(),
+
+
+
+
+
+      //txtParticipant2.getText().toString(),
                 //txtParticipant3.getText().toString(),
                 //txtParticipant4.getText().toString()
 
-        );
-        mApiService.createMeeting(meeting);
-        finish();
-    }
+        //);
+        //mApiService.createMeeting(meeting);
+        //finish();
+   // }
 
 
     public static void navigate(FragmentActivity activity) {

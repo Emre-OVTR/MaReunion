@@ -22,6 +22,7 @@ import emre.turhal.mareunion.model.Meeting;
 public class MeetingRecyclerViewAdapter extends RecyclerView.Adapter<MeetingRecyclerViewAdapter.ViewHolder> {
 
     private  List<Meeting> mMeetings;
+
     int[] images = new int[] {R.drawable.ic_baseline_circle_24, R.drawable.ic_baseline_circle_24_orange, R.drawable.ic_baseline_circle_24_yellow, R.drawable.ic_baseline_circle_24_green};
     //String[] participants = new String[] {String.valueOf(R.id.item_list_participant1), String.valueOf(R.id.item_list_participant2), String.valueOf(R.id.item_list_participant3), String.valueOf(R.id.item_list_participant4)};
 
@@ -44,6 +45,9 @@ public class MeetingRecyclerViewAdapter extends RecyclerView.Adapter<MeetingRecy
         holder.mMeetingPlace.setText(meeting.getPlace());
         holder.mMeetingObject.setText(meeting.getObject());
        // holder.mParticipant1.setText((CharSequence) meeting.getParticipants());
+        holder.mParticipants.setText(meeting.getParticipants().toString());
+
+
 
 
        // holder.mParticipant1.setText(participants.toString());
@@ -79,15 +83,8 @@ public class MeetingRecyclerViewAdapter extends RecyclerView.Adapter<MeetingRecy
         public TextView mMeetingObject;
         @BindView(R.id.item_list_delete_btn)
         public ImageButton mDeleteButton;
-        @BindView(R.id.item_list_participant1)
-        public TextView mParticipant1;
-        @BindView(R.id.item_list_participant2)
-        public TextView mParticipant2;
-        @BindView(R.id.item_list_participant3)
-        public TextView mParticipant3;
-        @BindView(R.id.item_list_participant4)
-        public TextView mParticipant4;
-
+        @BindView(R.id.participants_email_meeting_list)
+        public TextView mParticipants;
 
         public ViewHolder(View view) {
             super(view);
