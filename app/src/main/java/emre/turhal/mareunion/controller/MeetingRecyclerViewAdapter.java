@@ -24,7 +24,7 @@ public class MeetingRecyclerViewAdapter extends RecyclerView.Adapter<MeetingRecy
     private  List<Meeting> mMeetings;
 
     int[] images = new int[] {R.drawable.ic_baseline_circle_24, R.drawable.ic_baseline_circle_24_orange, R.drawable.ic_baseline_circle_24_yellow, R.drawable.ic_baseline_circle_24_green};
-    //String[] participants = new String[] {String.valueOf(R.id.item_list_participant1), String.valueOf(R.id.item_list_participant2), String.valueOf(R.id.item_list_participant3), String.valueOf(R.id.item_list_participant4)};
+
 
     public MeetingRecyclerViewAdapter(List<Meeting> items) {
         mMeetings = items;
@@ -44,16 +44,8 @@ public class MeetingRecyclerViewAdapter extends RecyclerView.Adapter<MeetingRecy
         holder.mMeetingHour.setText(meeting.getHour());
         holder.mMeetingPlace.setText(meeting.getPlace());
         holder.mMeetingObject.setText(meeting.getObject());
-       // holder.mParticipant1.setText((CharSequence) meeting.getParticipants());
         holder.mParticipants.setText(meeting.getParticipants().toString());
 
-
-
-
-       // holder.mParticipant1.setText(participants.toString());
-        //holder.mParticipant2.setText(meeting.getParticipant2());
-        //holder.mParticipant3.setText(meeting.getParticipant3());
-        //holder.mParticipant4.setText(meeting.getParticipant4());
 
         int imageId =(int)(Math.random() * images.length);
         holder.mColorCircle.setBackgroundResource(images[imageId]);

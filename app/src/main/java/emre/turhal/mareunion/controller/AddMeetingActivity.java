@@ -43,17 +43,14 @@ public class AddMeetingActivity extends AppCompatActivity {
 
     @BindView(R.id.my_toolbar2)
     Toolbar   mToolbar;
-
     @BindView(R.id.in_time)
     EditText txtTime;
     @BindView(R.id.in_place)
     EditText txtPlace;
     @BindView(R.id.in_comment)
     EditText txtComment;
-
     @BindView(R.id.participant)
     EditText txtParticipant;
-
     @BindView(R.id.participant2)
     EditText txtParticipant2;
     @BindView(R.id.participant3)
@@ -64,7 +61,8 @@ public class AddMeetingActivity extends AppCompatActivity {
 
     private MeetingApiService mApiService;
     private int mHour, mMinute;
-    //public EditText[] participants22 = new EditText[]{txtParticipant, txtParticipant2, txtParticipant3, txtParticipant4};
+
+
 
 
     @Override
@@ -94,27 +92,28 @@ public class AddMeetingActivity extends AppCompatActivity {
     }
 
 
-    //@OnClick(R.id.create)
-    //void addMeeting(){
+
+    @OnClick(R.id.create)
+    void addMeeting(){
 
 
-      //  Meeting meeting = new Meeting(System.currentTimeMillis(),
-        //        txtTime.getText().toString(),
-          //      txtPlace.getText().toString(),
-            //    txtComment.getText().toString(),
+        List<String> list = new ArrayList<>(4);
+        list.add(txtParticipant.getText().toString());
+        list.add(txtParticipant2.getText().toString());
+        list.add(txtParticipant3.getText().toString());
+        list.add(txtParticipant4.getText().toString());
 
 
+        Meeting meeting = new Meeting(System.currentTimeMillis(),
+                txtTime.getText().toString(),
+                txtPlace.getText().toString(),
+                txtComment.getText().toString(),
+                list
 
-
-
-      //txtParticipant2.getText().toString(),
-                //txtParticipant3.getText().toString(),
-                //txtParticipant4.getText().toString()
-
-        //);
-        //mApiService.createMeeting(meeting);
-        //finish();
-   // }
+        );
+        mApiService.createMeeting(meeting);
+        finish();
+    }
 
 
     public static void navigate(FragmentActivity activity) {
@@ -134,6 +133,7 @@ public class AddMeetingActivity extends AppCompatActivity {
         TimePickerDialog timePickerDialog = new TimePickerDialog(this,
                 new TimePickerDialog.OnTimeSetListener() {
 
+                    @SuppressLint("SetTextI18n")
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay,
                                           int minute) {
