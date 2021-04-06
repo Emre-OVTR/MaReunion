@@ -1,34 +1,22 @@
 package emre.turhal.mareunion.controller;
 
 import android.annotation.SuppressLint;
-import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.NumberPicker;
-import android.widget.TimePicker;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -71,7 +59,7 @@ public class AddMeetingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_meeting);
         ButterKnife.bind(this);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        (getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         mApiService = DI.getMeetingApiService();
 
 
@@ -97,18 +85,18 @@ public class AddMeetingActivity extends AppCompatActivity {
     void addMeeting(){
 
 
-        List<String> list = new ArrayList<>(4);
-        list.add(txtParticipant.getText().toString());
-        list.add(txtParticipant2.getText().toString());
-        list.add(txtParticipant3.getText().toString());
-        list.add(txtParticipant4.getText().toString());
+        List<String> nP = new ArrayList<>(4);
+        nP.add(txtParticipant.getText().toString());
+        nP.add(txtParticipant2.getText().toString());
+        nP.add(txtParticipant3.getText().toString());
+        nP.add(txtParticipant4.getText().toString());
 
 
         Meeting meeting = new Meeting(System.currentTimeMillis(),
                 txtTime.getText().toString(),
                 txtPlace.getText().toString(),
                 txtComment.getText().toString(),
-                list
+                nP
 
         );
         mApiService.createMeeting(meeting);
@@ -130,22 +118,13 @@ public class AddMeetingActivity extends AppCompatActivity {
         mMinute = c.get(Calendar.MINUTE);
 
         // Launch Time Picker Dialog
-        TimePickerDialog timePickerDialog = new TimePickerDialog(this,
-                new TimePickerDialog.OnTimeSetListener() {
-
-                    @SuppressLint("SetTextI18n")
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay,
-                                          int minute) {
-
-                        txtTime.setText(hourOfDay + ":" + minute);
-                    }
-                }, mHour, mMinute, true);
+        @SuppressLint("SetTextI18n") TimePickerDialog timePickerDialog = new TimePickerDialog(this,
+                (view1, hourOfDay, minute) -> txtTime.setText(mApiService.timePickerToString(hourOfDay, minute)), mHour, mMinute, true);
         timePickerDialog.show();
 
     }
 
-    public void onValueChange(NumberPicker numberPicker, int oldVal, int newVal) {
+    public void onValueChange(NumberPicker numberPicker) {
 
         txtPlace.setText(NumberPickerDialog.pickerVals[numberPicker.getValue()]);
 
@@ -153,7 +132,7 @@ public class AddMeetingActivity extends AppCompatActivity {
 
     public void showNumberPicker(View view){
         NumberPickerDialog newFragment = new NumberPickerDialog();
-        newFragment.setValueChangeListener(this::onValueChange);
+        newFragment.setValueChangeListener((numberPicker, oldVal, newVal) -> onValueChange(numberPicker));
         newFragment.show(getSupportFragmentManager(), "time picker");
     }
 }

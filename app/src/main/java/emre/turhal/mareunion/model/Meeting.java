@@ -21,7 +21,7 @@ public class Meeting {
 
     private String object;
 
-    public static List<String> participants;
+    private List<String> participants;
 
 
     public Meeting(long id, String hour, String place, String object, List<String> participants) {

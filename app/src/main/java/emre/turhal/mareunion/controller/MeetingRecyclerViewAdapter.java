@@ -1,5 +1,7 @@
 package emre.turhal.mareunion.controller;
 
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,13 +40,14 @@ public class MeetingRecyclerViewAdapter extends RecyclerView.Adapter<MeetingRecy
         return new ViewHolder(view);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         Meeting meeting = mMeetings.get(position);
         holder.mMeetingHour.setText(meeting.getHour());
         holder.mMeetingPlace.setText(meeting.getPlace());
         holder.mMeetingObject.setText(meeting.getObject());
-        holder.mParticipants.setText(meeting.getParticipants().toString());
+        holder.mParticipants.setText(String.join(", ", meeting.getParticipants()));
 
 
         int imageId =(int)(Math.random() * images.length);
@@ -89,6 +92,7 @@ public class MeetingRecyclerViewAdapter extends RecyclerView.Adapter<MeetingRecy
     public void updateMeeting(List<Meeting> newMeetings) {
 
         mMeetings = newMeetings;
+        notifyDataSetChanged();
 
 
 

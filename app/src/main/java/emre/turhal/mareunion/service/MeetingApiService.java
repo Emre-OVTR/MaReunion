@@ -13,13 +13,15 @@ import emre.turhal.mareunion.model.Meeting;
 public interface MeetingApiService {
 
     List<Meeting> getMeetings();
-    List<Meeting> filterMeetings (String filter, String type);
+    List<Meeting> filterMeetingsByTime (String time);
 
 
 
     void deleteMeeting (Meeting meeting);
 
     void createMeeting (Meeting meeting);
+
+    String timePickerToString(int hour, int minute);
 
 
 

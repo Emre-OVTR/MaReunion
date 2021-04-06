@@ -16,10 +16,14 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import org.greenrobot.eventbus.EventBus;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import emre.turhal.mareunion.R;
+import emre.turhal.mareunion.di.DI;
+import emre.turhal.mareunion.events.FilterMeetingEventByTime;
 import emre.turhal.mareunion.model.Meeting;
 import emre.turhal.mareunion.service.MeetingApiService;
 
@@ -29,14 +33,16 @@ MainActivity extends AppCompatActivity {
 
     @BindView(R.id.my_toolbar)
     Toolbar mToolbar;
+
     @BindView(R.id.container)
     ViewPager mViewPager;
-   // @BindView(R.id.filter_list)
-    //TextView mItem;
+
+
 
     int mHour, mMinute;
     ListMeetingPagerAdapter mPagerAdapter;
     private MeetingApiService mApiService;
+
 
 
 
@@ -46,6 +52,7 @@ MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         setSupportActionBar(mToolbar);
+        mApiService = DI.getMeetingApiService();
 
         Drawable drawable = ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_baseline_filter_list_24);
         mToolbar.setOverflowIcon(drawable);
@@ -58,7 +65,7 @@ MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_items, menu);
         return true;
-        //return super.onCreateOptionsMenu(menu);
+
     }
 
     @Override
@@ -73,8 +80,7 @@ MainActivity extends AppCompatActivity {
                             public void onTimeSet(TimePicker view, int hourOfDay,
                                                   int minute) {
 
-
-
+                                EventBus.getDefault().post(new FilterMeetingEventByTime(mApiService.timePickerToString(hourOfDay, minute)));
 
                             }
                         }, mHour, mMinute, true);
@@ -103,6 +109,9 @@ MainActivity extends AppCompatActivity {
         return;
 
     }
+
+
+
 }
 
 // afficher les mail que dans un seul textview passer une liste de participat en parametre de mEeting
