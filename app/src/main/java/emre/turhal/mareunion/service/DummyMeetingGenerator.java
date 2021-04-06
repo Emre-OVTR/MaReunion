@@ -17,10 +17,19 @@ import emre.turhal.mareunion.model.Meeting;
 public abstract class DummyMeetingGenerator {
 
     public static List<String> participants = Arrays.asList(
-            "nouveau@gmail.com, ancien@gmail.com, super@gmail.com, nul@gmail.com");
+            "merkel@president.de, hollande@ancienpresident.fr, elizabeth@queen.en , macron@president.fr");
+
+    public static List<String> participants02 = Arrays.asList(
+            "elonMusk04@paypal.com", "zuckerberg@facebook.com", "jeffbezos@amazon.com", "billgates@google.com");
+
+    public static List<String> participants03 =  Arrays.asList(
+            "jayz@tidal.com", "bieber@youtube.com", "drake@views.com", "cardib@redbottoms.com"
+    );
 
     public static List<Meeting> DUMMY_MEETINGS = Arrays.asList(
-            new Meeting(1, "14:00", "Salle D", " Future Project ", participants));
+            new Meeting(1, "14:00", "Salle D", "Crise sanitaire", participants),
+            new Meeting(2,"15:00", "Salle A", "Cryptomonnaie", participants02),
+            new Meeting(3,"17:30","Salle H","Album commun", participants03));
 
     static List<Meeting> generateMeetings() {
         return new ArrayList<>(DUMMY_MEETINGS);

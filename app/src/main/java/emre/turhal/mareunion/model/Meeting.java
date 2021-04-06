@@ -1,14 +1,7 @@
 package emre.turhal.mareunion.model;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
+
 
 public class Meeting {
 
@@ -32,10 +25,6 @@ public class Meeting {
         this.place = place;
         this.object = object;
         this.participants = participants;
-
-
-
-
     }
 
 

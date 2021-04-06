@@ -114,15 +114,6 @@ MainActivity extends AppCompatActivity {
 
 }
 
-// afficher les mail que dans un seul textview passer une liste de participat en parametre de mEeting
 
-    // android:ellipsize="end" ajouter dans textview pour afficher les mails
-
-// filtrer par heure et par lieu la liste des meetings
-
-
-
-
-//https://developer.android.com/guide/topics/ui/dialogs#AddingAList
 
 

@@ -38,11 +38,11 @@ public class NumberPickerDialog extends DialogFragment {
             }
         });
 
-        builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("ANNULER", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                valueChangeListener.onValueChange(numberPicker,
-                        numberPicker.getValue(), numberPicker.getValue());
+                //valueChangeListener.onValueChange(numberPicker,
+                  //    numberPicker.getValue(), numberPicker.getValue());
             }
         });
 
