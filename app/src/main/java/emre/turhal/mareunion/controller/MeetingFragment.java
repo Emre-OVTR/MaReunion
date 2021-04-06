@@ -18,6 +18,7 @@ import java.util.List;
 import emre.turhal.mareunion.R;
 import emre.turhal.mareunion.di.DI;
 import emre.turhal.mareunion.events.DeleteMeetingEvent;
+import emre.turhal.mareunion.events.FilterMeetingEventByPlace;
 import emre.turhal.mareunion.events.FilterMeetingEventByTime;
 import emre.turhal.mareunion.model.Meeting;
 import emre.turhal.mareunion.service.MeetingApiService;
@@ -48,6 +49,8 @@ public class MeetingFragment extends Fragment {
         mRecyclerView = (RecyclerView) view;
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+
+
         mMeetingRecyclerViewAdapter = new MeetingRecyclerViewAdapter(mMeetingList);
         mRecyclerView.setAdapter(mMeetingRecyclerViewAdapter);
         return view;
@@ -77,14 +80,25 @@ public class MeetingFragment extends Fragment {
     }
 
     @Subscribe
-    public void onDeleteMeeting(DeleteMeetingEvent event){
+    public void onDeleteMeeting(DeleteMeetingEvent event) {
         mApiService.deleteMeeting(event.meeting);
         initList();
     }
 
     @Subscribe
-    public void onFilterMeeting(FilterMeetingEventByTime event){
+    public void onFilterMeeting(FilterMeetingEventByTime event) {
         mMeetingRecyclerViewAdapter.updateMeeting(mApiService.filterMeetingsByTime(event.timeSelected));
     }
+
+    @Subscribe
+    public void onFilterMeetingByPlace(FilterMeetingEventByPlace event) {
+        mMeetingRecyclerViewAdapter.updateMeeting(mApiService.filterMeetingsByPlace(event.placeSelected));
+
+
+    }
+
+
+
+
 }
 

@@ -2,6 +2,7 @@ package emre.turhal.mareunion.service;
 
 
 import android.util.Log;
+import android.widget.NumberPicker;
 import android.widget.TimePicker;
 
 import java.util.ArrayList;
@@ -16,6 +17,8 @@ public class DummyMeetingApiService implements MeetingApiService{
 
     @Override
     public List<Meeting> getMeetings() {
+
+
         return meetings;
     }
 
@@ -56,6 +59,20 @@ public class DummyMeetingApiService implements MeetingApiService{
     }
 
     @Override
+    public List<Meeting> filterMeetingsByPlace(String place) {
+
+        List<Meeting> placeFilteredMeetings = new ArrayList<>();
+
+        for (Meeting meeting : meetings){
+
+            if (meeting.getPlace().equals(place)){
+                placeFilteredMeetings.add(meeting);
+            }
+        }
+        return placeFilteredMeetings;
+    }
+
+    @Override
     public String timePickerToString(int hour, int minute) {
        String hourformated;
        if (hour <= 9){
@@ -70,4 +87,7 @@ public class DummyMeetingApiService implements MeetingApiService{
        else minuteformated = String.valueOf(minute);
     return hourformated + ":" + minuteformated;
     }
+
+
+
 }

@@ -1,11 +1,8 @@
 package emre.turhal.mareunion.controller;
 
-import android.annotation.SuppressLint;
 import android.app.TimePickerDialog;
-import android.content.ClipData;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +10,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.NumberPicker;
-import android.widget.TextView;
 import android.widget.TimePicker;
 
 import org.greenrobot.eventbus.EventBus;
@@ -23,8 +19,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import emre.turhal.mareunion.R;
 import emre.turhal.mareunion.di.DI;
+import emre.turhal.mareunion.events.FilterMeetingEventByPlace;
 import emre.turhal.mareunion.events.FilterMeetingEventByTime;
-import emre.turhal.mareunion.model.Meeting;
 import emre.turhal.mareunion.service.MeetingApiService;
 
 public class
@@ -42,6 +38,7 @@ MainActivity extends AppCompatActivity {
     int mHour, mMinute;
     ListMeetingPagerAdapter mPagerAdapter;
     private MeetingApiService mApiService;
+
 
 
 
@@ -95,6 +92,9 @@ MainActivity extends AppCompatActivity {
 
                 return true;
 
+            case R.id.no_filter:
+
+                mViewPager.setAdapter(mPagerAdapter);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -106,7 +106,7 @@ MainActivity extends AppCompatActivity {
 
     public void onValueChange(NumberPicker numberPicker, int oldVal, int newVal) {
 
-        return;
+        EventBus.getDefault().post(new FilterMeetingEventByPlace(NumberPickerDialog.pickerVals[numberPicker.getValue()]));
 
     }
 

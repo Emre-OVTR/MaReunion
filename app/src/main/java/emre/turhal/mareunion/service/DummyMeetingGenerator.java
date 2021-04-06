@@ -20,7 +20,7 @@ public abstract class DummyMeetingGenerator {
             "nouveau@gmail.com, ancien@gmail.com, super@gmail.com, nul@gmail.com");
 
     public static List<Meeting> DUMMY_MEETINGS = Arrays.asList(
-            new Meeting(1, "14:00", "Room A", " Future Project ", participants));
+            new Meeting(1, "14:00", "Salle D", " Future Project ", participants));
 
     static List<Meeting> generateMeetings() {
         return new ArrayList<>(DUMMY_MEETINGS);

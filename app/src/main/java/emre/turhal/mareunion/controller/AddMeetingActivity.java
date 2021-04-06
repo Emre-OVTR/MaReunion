@@ -100,7 +100,7 @@ public class AddMeetingActivity extends AppCompatActivity {
 
         );
         mApiService.createMeeting(meeting);
-        finish();
+
     }
 
 

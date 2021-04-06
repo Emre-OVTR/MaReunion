@@ -26,8 +26,8 @@ public class NumberPickerDialog extends DialogFragment {
         numberPicker.setDisplayedValues(pickerVals);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Choose Room");
-        builder.setMessage("Choose a number :");
+        builder.setTitle("Sélectionnez une salle:");
+        //builder.setMessage("Sélectionnez une salle:");
 
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override

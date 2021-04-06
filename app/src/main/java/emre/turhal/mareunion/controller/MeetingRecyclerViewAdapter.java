@@ -89,7 +89,7 @@ public class MeetingRecyclerViewAdapter extends RecyclerView.Adapter<MeetingRecy
     }
 
 
-    public void updateMeeting(List<Meeting> newMeetings) {
+    public void  updateMeeting(List<Meeting> newMeetings) {
 
         mMeetings = newMeetings;
         notifyDataSetChanged();

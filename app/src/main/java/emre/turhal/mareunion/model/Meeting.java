@@ -24,6 +24,8 @@ public class Meeting {
     private List<String> participants;
 
 
+
+
     public Meeting(long id, String hour, String place, String object, List<String> participants) {
         this.id = id;
         this.hour = hour;
@@ -32,7 +34,11 @@ public class Meeting {
         this.participants = participants;
 
 
+
+
     }
+
+
 
 
     public long getId() {
@@ -74,6 +80,9 @@ public class Meeting {
     public void setParticipants(List<String> participants) {
         this.participants = participants;
     }
+
+
+
 }
 
 

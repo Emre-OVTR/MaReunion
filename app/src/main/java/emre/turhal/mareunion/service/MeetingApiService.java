@@ -2,6 +2,7 @@ package emre.turhal.mareunion.service;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.widget.NumberPicker;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -14,6 +15,7 @@ public interface MeetingApiService {
 
     List<Meeting> getMeetings();
     List<Meeting> filterMeetingsByTime (String time);
+    List<Meeting> filterMeetingsByPlace (String place);
 
 
 
@@ -22,6 +24,7 @@ public interface MeetingApiService {
     void createMeeting (Meeting meeting);
 
     String timePickerToString(int hour, int minute);
+
 
 
 
