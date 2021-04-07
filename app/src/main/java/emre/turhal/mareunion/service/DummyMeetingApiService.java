@@ -40,11 +40,11 @@ public class DummyMeetingApiService implements MeetingApiService{
 
         List<Meeting> filteredMeetings = new ArrayList<>();
 
-        Log.e("tag", time);
+//        Log.e("tag", time);
 
         for (Meeting meeting : meetings){
 
-            Log.e("tag", meeting.getHour());
+//          Log.e("tag", meeting.getHour());
 
             if (meeting.getHour().equals(time)){
 
