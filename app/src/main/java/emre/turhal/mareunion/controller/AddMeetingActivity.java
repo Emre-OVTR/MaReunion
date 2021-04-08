@@ -22,6 +22,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import emre.turhal.mareunion.R;
+import emre.turhal.mareunion.Utils.ToastUtils;
 import emre.turhal.mareunion.di.DI;
 import emre.turhal.mareunion.model.Meeting;
 import emre.turhal.mareunion.service.MeetingApiService;
@@ -100,6 +101,7 @@ public class AddMeetingActivity extends AppCompatActivity {
 
         );
         mApiService.createMeeting(meeting);
+        ToastUtils.showToastLong("La réunion à été sauvegardé", getApplicationContext());
 
     }
 
