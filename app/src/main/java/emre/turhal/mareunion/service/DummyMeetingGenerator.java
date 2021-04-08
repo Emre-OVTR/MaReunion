@@ -17,7 +17,7 @@ import emre.turhal.mareunion.model.Meeting;
 public abstract class DummyMeetingGenerator {
 
     public static List<String> participants = Arrays.asList(
-            "merkel@president.de, hollande@ancienpresident.fr, elizabeth@queen.en , macron@president.fr");
+            "merkel@president.de, macron@president.fr, elizabeth@queen.en , carlos@roi.es");
 
     public static List<String> participants02 = Arrays.asList(
             "elonMusk04@paypal.com", "zuckerberg@facebook.com", "jeffbezos@amazon.com", "billgates@google.com");
