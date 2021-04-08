@@ -31,7 +31,7 @@ public class MeetingServiceTest {
     }
 
     @Test
-    public void getMeetingsWithSuccess(){
+    public void getMeetings(){
 
         List<Meeting> meetings= service.getMeetings();
         List<Meeting> expectedMeetings = DummyMeetingGenerator.DUMMY_MEETINGS;
@@ -39,7 +39,7 @@ public class MeetingServiceTest {
     }
 
     @Test
-    public void deleteMeetingWithSuccess(){
+    public void deleteMeeting(){
 
         Meeting meetingToDelete = service.getMeetings().get(0);
         service.deleteMeeting(meetingToDelete);
