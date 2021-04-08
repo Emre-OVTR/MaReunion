@@ -1,18 +1,12 @@
-package emre.turhal.mareunion;
+package emre.turhal.mareunion.meeting_list;
 
-import android.app.TimePickerDialog;
-import android.support.test.espresso.ViewInteraction;
-import android.support.test.espresso.contrib.PickerActions;
-import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
-import android.widget.DatePicker;
-import android.widget.TimePicker;
 
-import org.hamcrest.Matchers;
 import org.junit.Rule;
 import org.junit.Test;
 
+import emre.turhal.mareunion.R;
 import emre.turhal.mareunion.controller.MainActivity;
 
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
@@ -25,8 +19,6 @@ import static android.support.test.espresso.action.ViewActions.pressKey;
 import static android.support.test.espresso.action.ViewActions.pressMenuKey;
 import static android.support.test.espresso.action.ViewActions.replaceText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.isClickable;
-import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
@@ -36,8 +28,11 @@ import static org.junit.Assert.assertTrue;
 public class MainActivityTest {
 
     @Rule
-    public ActivityTestRule<MainActivity> mActivityRule =
-            new ActivityTestRule(MainActivity.class);
+    public ActivityTestRule<MainActivity> mActivityRule;
+
+    public MainActivityTest() {
+        mActivityRule = new ActivityTestRule<>(MainActivity.class);
+    }
 
     public static void setTime() {
         onView(withId(android.R.id.button1)).perform(click());
@@ -51,7 +46,7 @@ public class MainActivityTest {
     @Test
     public void fab_shouldStartAddMeetingActivity() {
 
-        onView(withId(R.id.add_meeting)).perform(click());
+        onView(ViewMatchers.withId(R.id.add_meeting)).perform(click());
 
         onView(withId(R.id.create)).check(matches(isDisplayed())).perform(pressBack());
     }

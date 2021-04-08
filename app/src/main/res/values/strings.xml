@@ -5,5 +5,17 @@
     <string name="filter_list">Filtrer par heure</string>
     <string name="select_a_room">Chosir le lieu</string>
     <string name="filter_place">Filtrer par lieu</string>
+    <string name="no_filter">Toutes les réunions</string>
+    <string name="save_btn">Sauvegarder</string>
+    <string name="meeting_object">Objet de la réunion</string>
+    <string name="enter_mail_participants">Entrez E-mail</string>
+    <string name="time_select">Choisir l\'heure</string>
+    <string name="colour_circle">colour_circle</string>
+    <string name="delete_button">delete_button</string>
+    <string name="add_meeting_fab">add_meeting_fab</string>
+    <string name="participant_logo">participant_logo</string>
+    <string name="comment_image">Comment_image</string>
+    <string name="logo_room">logo_room</string>
+    <string name="logo_time">logo_time</string>
 
 </resources>

@@ -28,10 +28,11 @@
         android:id="@+id/add_meeting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="330dp"
+        android:layout_marginStart="330dp"
         android:layout_marginTop="500dp"
         app:backgroundTint="@color/red"
-        app:srcCompat="@drawable/ic_meeting_add_white_24dp" />
+        app:srcCompat="@drawable/ic_meeting_add_white_24dp"
+        android:contentDescription="@string/add_meeting_fab" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/container"

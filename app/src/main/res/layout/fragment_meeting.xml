@@ -20,7 +20,8 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/colour_circle" />
 
     <TextView
         android:id="@+id/item_list_hour"
@@ -30,7 +31,8 @@
         android:inputType="time"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/item_list_color"
-        app:layout_constraintTop_toTopOf="@id/item_list_color" />
+        app:layout_constraintTop_toTopOf="@id/item_list_color"
+        tools:ignore="TextViewEdits" />
 
     <TextView
         android:id="@+id/item_list_place"
@@ -61,7 +63,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/item_list_object"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/item_list_object"
-        app:srcCompat="@drawable/ic_delete_black_24dp" />
+        app:srcCompat="@drawable/ic_delete_black_24dp"
+        android:contentDescription="@string/delete_button" />
 
     <TextView
         android:id="@+id/participants_email_meeting_list"
@@ -72,7 +75,6 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:singleLine="true"
-        android:text="mail"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textSize="12sp"
         android:textStyle="italic"
