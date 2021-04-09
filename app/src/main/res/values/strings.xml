@@ -17,5 +17,6 @@
     <string name="comment_image">Comment_image</string>
     <string name="logo_room">logo_room</string>
     <string name="logo_time">logo_time</string>
+    <string name="room_request">Veuillez choisir une salle</string>
 
 </resources>

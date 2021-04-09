@@ -82,16 +82,19 @@ public class AddMeetingActivity extends AppCompatActivity {
 
 
 
-    @OnClick(R.id.create)
+    @OnClick({R.id.create})
     void addMeeting(){
 
 
 
         if (txtTime.getText().toString().equals("")) {
-            ToastUtils.showToastLong("Veuillez SVP choisir une heure", getApplicationContext());
+            ToastUtils.showToastLong("Veuillez choisir une heure", getApplicationContext());
         } else if(txtPlace.getText().toString().equals("")) {
-            ToastUtils.showToastLong("Veuillez SVP choisir une salle", getApplicationContext());
-        } else if(txtParticipant.getText().toString().equals("")) {
+            ToastUtils.showToastLong(getString(R.string.room_request), getApplicationContext());
+        } else if(txtParticipant.getText().toString().equals("")||
+                txtParticipant2.getText().toString().equals("")||
+                txtParticipant3.getText().toString().equals("")||
+                txtParticipant4.getText().toString().equals("")){
             ToastUtils.showToastLong("Veuillez ajouter au moins un participant", getApplicationContext());
         } else if(txtComment.getText().toString().equals("")) {
             ToastUtils.showToastLong("Veuillez définir l'objet de la réunion", getApplicationContext());

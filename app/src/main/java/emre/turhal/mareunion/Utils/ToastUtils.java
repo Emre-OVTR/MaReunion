@@ -4,7 +4,7 @@ import android.content.Context;
 import android.widget.Toast;
 
 
-    public class ToastUtils {
+    public abstract class ToastUtils {
 
         public static void showToastLong(String string, Context mContext) {
             int duration = Toast.LENGTH_LONG;
