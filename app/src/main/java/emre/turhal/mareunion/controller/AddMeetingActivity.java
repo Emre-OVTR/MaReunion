@@ -86,22 +86,36 @@ public class AddMeetingActivity extends AppCompatActivity {
     void addMeeting(){
 
 
-        List<String> nP = new ArrayList<>(4);
-        nP.add(txtParticipant.getText().toString());
-        nP.add(txtParticipant2.getText().toString());
-        nP.add(txtParticipant3.getText().toString());
-        nP.add(txtParticipant4.getText().toString());
+
+        if (txtTime.getText().toString().equals("")) {
+            ToastUtils.showToastLong("Veuillez SVP choisir une heure", getApplicationContext());
+        } else if(txtPlace.getText().toString().equals("")) {
+            ToastUtils.showToastLong("Veuillez SVP choisir une salle", getApplicationContext());
+        } else if(txtParticipant.getText().toString().equals("")) {
+            ToastUtils.showToastLong("Veuillez ajouter au moins un participant", getApplicationContext());
+        } else if(txtComment.getText().toString().equals("")) {
+            ToastUtils.showToastLong("Veuillez définir l'objet de la réunion", getApplicationContext());
+        } else {
 
 
-        Meeting meeting = new Meeting(System.currentTimeMillis(),
-                txtTime.getText().toString(),
-                txtPlace.getText().toString(),
-                txtComment.getText().toString(),
-                nP
+            List<String> nP = new ArrayList<>(4);
+            nP.add(txtParticipant.getText().toString());
+            nP.add(txtParticipant2.getText().toString());
+            nP.add(txtParticipant3.getText().toString());
+            nP.add(txtParticipant4.getText().toString());
 
-        );
-        mApiService.createMeeting(meeting);
-        ToastUtils.showToastLong("La réunion à été sauvegardé", getApplicationContext());
+
+
+            Meeting meeting = new Meeting(System.currentTimeMillis(),
+                    txtTime.getText().toString(),
+                    txtPlace.getText().toString(),
+                    txtComment.getText().toString(),
+                    nP
+
+            );
+            mApiService.createMeeting(meeting);
+            ToastUtils.showToastLong("La réunion à été sauvegardé", getApplicationContext());
+        }
 
     }
 
