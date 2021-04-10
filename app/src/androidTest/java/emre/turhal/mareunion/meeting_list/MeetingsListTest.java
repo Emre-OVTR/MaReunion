@@ -30,7 +30,7 @@ import static org.junit.Assert.*;
 public class MeetingsListTest {
 
 
-    private static int ITEMS_COUNT = 3;
+    //private static int ITEMS_COUNT = 3;
     private MainActivity mActivity;
 
     @Rule
@@ -51,12 +51,12 @@ public class MeetingsListTest {
 
     @Test
     public void myNeighboursList_deleteAction_shouldRemoveItem() {
-        onView(withId(R.id.list_meetings)).check(withItemCount(ITEMS_COUNT));
+        onView(withId(R.id.list_meetings)).check(withItemCount(4));
 
         onView(withId(R.id.list_meetings))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(0, new DeleteViewAction()));
 
-        onView(withId(R.id.list_meetings)).check(withItemCount(ITEMS_COUNT-1));
+        onView(withId(R.id.list_meetings)).check(withItemCount(3));
     }
 
 
