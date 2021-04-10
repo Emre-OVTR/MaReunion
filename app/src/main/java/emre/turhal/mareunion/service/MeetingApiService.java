@@ -23,7 +23,7 @@ public interface MeetingApiService {
 
     void createMeeting (Meeting meeting);
 
-    String timePickerToString(int hour, int minute);
+
 
 
 

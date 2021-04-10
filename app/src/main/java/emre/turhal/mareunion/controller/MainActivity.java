@@ -19,6 +19,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import emre.turhal.mareunion.R;
+import emre.turhal.mareunion.Utils.TimeUtils;
 import emre.turhal.mareunion.di.DI;
 import emre.turhal.mareunion.events.FilterMeetingEventByPlace;
 import emre.turhal.mareunion.events.FilterMeetingEventByTime;
@@ -52,6 +53,7 @@ MainActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         mApiService = DI.getMeetingApiService();
 
+
         Drawable drawable = ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_baseline_filter_list_24);
         mToolbar.setOverflowIcon(drawable);
         mPagerAdapter = new ListMeetingPagerAdapter(getSupportFragmentManager());
@@ -78,7 +80,7 @@ MainActivity extends AppCompatActivity {
                             public void onTimeSet(TimePicker view, int hourOfDay,
                                                   int minute) {
 
-                                EventBus.getDefault().post(new FilterMeetingEventByTime(mApiService.timePickerToString(hourOfDay, minute)));
+                                EventBus.getDefault().post(new FilterMeetingEventByTime(TimeUtils.timePickerToString(hourOfDay, minute)));
 
                             }
                         }, mHour, mMinute, true);

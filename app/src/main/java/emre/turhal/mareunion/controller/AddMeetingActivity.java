@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.NumberPicker;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
@@ -22,6 +23,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import emre.turhal.mareunion.R;
+import emre.turhal.mareunion.Utils.TimeUtils;
 import emre.turhal.mareunion.Utils.ToastUtils;
 import emre.turhal.mareunion.di.DI;
 import emre.turhal.mareunion.model.Meeting;
@@ -48,8 +50,11 @@ public class AddMeetingActivity extends AppCompatActivity {
     EditText txtParticipant4;
 
 
+
+
     private MeetingApiService mApiService;
     private int mHour, mMinute;
+    private List<String> nP = new ArrayList<>(4);
 
 
 
@@ -87,37 +92,44 @@ public class AddMeetingActivity extends AppCompatActivity {
 
 
 
+
+
         if (txtTime.getText().toString().equals("")) {
-            ToastUtils.showToastLong("Veuillez choisir une heure", getApplicationContext());
+            ToastUtils.showToastLong(getString(R.string.time_choose), getApplicationContext());
         } else if(txtPlace.getText().toString().equals("")) {
             ToastUtils.showToastLong(getString(R.string.room_request), getApplicationContext());
-        } else if(txtParticipant.getText().toString().equals("")||
-                txtParticipant2.getText().toString().equals("")||
-                txtParticipant3.getText().toString().equals("")||
+        } else if (txtParticipant.getText().toString().equals("")&
+                txtParticipant2.getText().toString().equals("")&
+                txtParticipant3.getText().toString().equals("")&
                 txtParticipant4.getText().toString().equals("")){
-            ToastUtils.showToastLong("Veuillez ajouter au moins un participant", getApplicationContext());
+            ToastUtils.showToastLong("Veuillez ajouter un participant", getApplicationContext());
         } else if(txtComment.getText().toString().equals("")) {
             ToastUtils.showToastLong("Veuillez définir l'objet de la réunion", getApplicationContext());
         } else {
 
 
-            List<String> nP = new ArrayList<>(4);
-            nP.add(txtParticipant.getText().toString());
-            nP.add(txtParticipant2.getText().toString());
-            nP.add(txtParticipant3.getText().toString());
-            nP.add(txtParticipant4.getText().toString());
+                nP.add(txtParticipant.getText().toString());
+                nP.add(txtParticipant2.getText().toString());
+                nP.add(txtParticipant3.getText().toString());
+                nP.add(txtParticipant4.getText().toString());
 
 
 
-            Meeting meeting = new Meeting(System.currentTimeMillis(),
-                    txtTime.getText().toString(),
-                    txtPlace.getText().toString(),
-                    txtComment.getText().toString(),
-                    nP
 
-            );
-            mApiService.createMeeting(meeting);
-            ToastUtils.showToastLong("La réunion à été sauvegardé", getApplicationContext());
+
+
+
+
+                Meeting meeting = new Meeting(System.currentTimeMillis(),
+                        txtTime.getText().toString(),
+                        txtPlace.getText().toString(),
+                        txtComment.getText().toString(),
+                        nP
+
+                );
+                mApiService.createMeeting(meeting);
+                finish();
+
         }
 
     }
@@ -138,7 +150,7 @@ public class AddMeetingActivity extends AppCompatActivity {
 
         // Launch Time Picker Dialog
         @SuppressLint("SetTextI18n") TimePickerDialog timePickerDialog = new TimePickerDialog(this,
-                (view1, hourOfDay, minute) -> txtTime.setText(mApiService.timePickerToString(hourOfDay, minute)), mHour, mMinute, true);
+                (view1, hourOfDay, minute) -> txtTime.setText(TimeUtils.timePickerToString(hourOfDay, minute)), mHour, mMinute, true);
         timePickerDialog.show();
 
     }
