@@ -1,7 +1,9 @@
 package emre.turhal.mareunion.meeting_list;
 
+import android.app.TimePickerDialog;
 import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
+import android.widget.TimePicker;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -19,8 +21,12 @@ import static android.support.test.espresso.action.ViewActions.pressKey;
 import static android.support.test.espresso.action.ViewActions.pressMenuKey;
 import static android.support.test.espresso.action.ViewActions.replaceText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.contrib.PickerActions.setDate;
+import static android.support.test.espresso.contrib.PickerActions.setTime;
+import static android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withTagValue;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static emre.turhal.mareunion.utils.RecyclerViewItemCountAssertion.withItemCount;
 import static org.junit.Assert.assertTrue;
@@ -34,12 +40,17 @@ public class MainActivityTest {
         mActivityRule = new ActivityTestRule<>(MainActivity.class);
     }
 
-    public static void setTime() {
+    public static void setTestTime() {
+
+        onView(isAssignableFrom(TimePicker.class)).perform(setTime(14,00));
         onView(withId(android.R.id.button1)).perform(click());
     }
 
     public static void setPlace(){
+
+
         onView(withId(android.R.id.button1)).perform(click());
+
     }
 
 
@@ -56,10 +67,14 @@ public class MainActivityTest {
 
         openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext());
         onView(withText("Filtrer par heure")).perform(click());
-        setTime();
+        setTestTime();
+        onView(ViewMatchers.withId(R.id.list_meetings)).check(withItemCount(1));
 
         openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext());
         onView(withText("Toutes les réunions")).perform(click());
+        onView(ViewMatchers.withId(R.id.list_meetings)).check(withItemCount(3));
+
+        // voir si on peut changer l'heure
     }
 
     @Test
@@ -69,9 +84,14 @@ public class MainActivityTest {
         openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext());
         onView(withText("Filtrer par lieu")).perform(click());
         setPlace();
+        onView(ViewMatchers.withId(R.id.list_meetings)).check(withItemCount(1));
 
         openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext());
         onView(withText("Toutes les réunions")).perform(click());
+        onView(ViewMatchers.withId(R.id.list_meetings)).check(withItemCount(3));
+
+        // voir si on peut changer la salle
+
     }
 
 
@@ -79,9 +99,9 @@ public class MainActivityTest {
     public void createMeetingWithSuccess() {
         onView(withId(R.id.add_meeting)).perform(click());
         onView(withId(R.id.time_btn)).perform(click());
-        setTime();
+        setTestTime();
 
-        onView(withId(R.id.button)).perform(click());
+        onView(withId(R.id.place_btn)).perform(click());
         setPlace();
 
         onView(withId(R.id.participant)).perform(replaceText("test@test.com"), closeSoftKeyboard());
@@ -90,9 +110,9 @@ public class MainActivityTest {
 
         onView(withId(R.id.in_comment)).perform(replaceText("TEST"), closeSoftKeyboard());
 
-        onView(withId(R.id.create)).perform(click()).perform(pressBack());
+        onView(withId(R.id.create)).perform(click());
 
-        onView(ViewMatchers.withId(R.id.list_meetings)).check(withItemCount(4)).perform(pressMenuKey());
+        onView(ViewMatchers.withId(R.id.list_meetings)).check(withItemCount(4));
 
 
 

@@ -15,6 +15,10 @@ import android.widget.TimePicker;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.util.Calendar;
+import java.util.Locale;
+import java.util.TimeZone;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -73,6 +77,10 @@ MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
             case R.id.filter_list:
+
+
+
+
                 TimePickerDialog timePickerDialog = new TimePickerDialog(this,
                         new TimePickerDialog.OnTimeSetListener() {
 
