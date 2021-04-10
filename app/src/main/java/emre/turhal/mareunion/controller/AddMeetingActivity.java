@@ -1,6 +1,5 @@
 package emre.turhal.mareunion.controller;
 
-import android.annotation.SuppressLint;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,13 +10,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.NumberPicker;
+import android.widget.ImageButton;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,7 +30,7 @@ public class AddMeetingActivity extends AppCompatActivity {
 
 
     @BindView(R.id.my_toolbar2)
-    Toolbar   mToolbar;
+    Toolbar mToolbar;
     @BindView(R.id.in_time)
     EditText txtTime;
     @BindView(R.id.in_place)
@@ -48,15 +45,13 @@ public class AddMeetingActivity extends AppCompatActivity {
     EditText txtParticipant3;
     @BindView(R.id.participant4)
     EditText txtParticipant4;
-
-
+    @BindView(R.id.time_btn)
+    ImageButton mTimeBtn;
+    @BindView(R.id.place_btn)
+    ImageButton mPlaceBtn;
 
 
     private MeetingApiService mApiService;
-    private int mHour, mMinute;
-    private List<String> nP = new ArrayList<>(4);
-
-
 
 
     @Override
@@ -65,75 +60,9 @@ public class AddMeetingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_meeting);
         ButterKnife.bind(this);
         setSupportActionBar(mToolbar);
-        (getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mApiService = DI.getMeetingApiService();
-
-
-
-
-
-
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-
-
-    @OnClick({R.id.create})
-    void addMeeting(){
-
-
-
-
-
-        if (txtTime.getText().toString().equals("")) {
-            ToastUtils.showToastLong(getString(R.string.time_choose), getApplicationContext());
-        } else if(txtPlace.getText().toString().equals("")) {
-            ToastUtils.showToastLong(getString(R.string.room_request), getApplicationContext());
-        } else if (txtParticipant.getText().toString().equals("")&
-                txtParticipant2.getText().toString().equals("")&
-                txtParticipant3.getText().toString().equals("")&
-                txtParticipant4.getText().toString().equals("")){
-            ToastUtils.showToastLong("Veuillez ajouter un participant", getApplicationContext());
-        } else if(txtComment.getText().toString().equals("")) {
-            ToastUtils.showToastLong("Veuillez définir l'objet de la réunion", getApplicationContext());
-        } else {
-
-
-                nP.add(txtParticipant.getText().toString());
-                nP.add(txtParticipant2.getText().toString());
-                nP.add(txtParticipant3.getText().toString());
-                nP.add(txtParticipant4.getText().toString());
-
-
-
-
-
-
-
-
-                Meeting meeting = new Meeting(System.currentTimeMillis(),
-                        txtTime.getText().toString(),
-                        txtPlace.getText().toString(),
-                        txtComment.getText().toString(),
-                        nP
-
-                );
-                mApiService.createMeeting(meeting);
-                finish();
-
-        }
-
-    }
-
 
     public static void navigate(FragmentActivity activity) {
         Intent intent = new Intent(activity, AddMeetingActivity.class);
@@ -141,29 +70,72 @@ public class AddMeetingActivity extends AppCompatActivity {
     }
 
 
-    
 
-    public void  showTimePicker(View view){
+    @OnClick({R.id.time_btn, R.id.in_time})
+    public void showTimePicker(View view) {
+
+        int mHour, mMinute;
         final Calendar c = Calendar.getInstance();
         mHour = c.get(Calendar.HOUR_OF_DAY);
         mMinute = c.get(Calendar.MINUTE);
 
-        // Launch Time Picker Dialog
-        @SuppressLint("SetTextI18n") TimePickerDialog timePickerDialog = new TimePickerDialog(this,
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this,
                 (view1, hourOfDay, minute) -> txtTime.setText(TimeUtils.timePickerToString(hourOfDay, minute)), mHour, mMinute, true);
         timePickerDialog.show();
 
-    }
-
-    public void onValueChange(NumberPicker numberPicker) {
-
-        txtPlace.setText(NumberPickerDialog.pickerVals[numberPicker.getValue()]);
 
     }
 
-    public void showNumberPicker(View view){
+    @OnClick({R.id.place_btn, R.id.in_place})
+    public void showNumberPicker(View view) {
         NumberPickerDialog newFragment = new NumberPickerDialog();
-        newFragment.setValueChangeListener((numberPicker, oldVal, newVal) -> onValueChange(numberPicker));
+        newFragment.setValueChangeListener((numberPicker, oldVal, newVal) -> txtPlace.setText(NumberPickerDialog.pickerVals[numberPicker.getValue()]));
         newFragment.show(getSupportFragmentManager(), "time picker");
+    }
+
+
+    @OnClick({R.id.create})
+    void addMeeting() {
+
+
+        if (txtTime.getText().toString().equals("")) {
+            ToastUtils.showToastLong(getString(R.string.time_choose), getApplicationContext());
+        } else if (txtPlace.getText().toString().equals("")) {
+            ToastUtils.showToastLong(getString(R.string.room_request), getApplicationContext());
+        } else if (txtParticipant.getText().toString().equals("") &
+                txtParticipant2.getText().toString().equals("") &
+                txtParticipant3.getText().toString().equals("") &
+                txtParticipant4.getText().toString().equals("")) {
+            ToastUtils.showToastLong(getString(R.string.add_one_participant), getApplicationContext());
+        } else if (txtComment.getText().toString().equals("")) {
+            ToastUtils.showToastLong(getString(R.string.object_of_meeting), getApplicationContext());
+        } else {
+
+            List<String> nP = new ArrayList<>();
+            nP.add(txtParticipant.getText().toString());
+            nP.add(txtParticipant2.getText().toString());
+            nP.add(txtParticipant3.getText().toString());
+            nP.add(txtParticipant4.getText().toString());
+
+            Meeting meeting = new Meeting(System.currentTimeMillis(),
+                    txtTime.getText().toString(),
+                    txtPlace.getText().toString(),
+                    txtComment.getText().toString(),
+                    nP
+
+            );
+            mApiService.createMeeting(meeting);
+            finish();
+        }
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

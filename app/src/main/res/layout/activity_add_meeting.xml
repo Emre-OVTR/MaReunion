@@ -38,7 +38,6 @@
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:id="@+id/time_btn"
-                android:onClick="showTimePicker"
                 android:background="@color/white"
                 android:src="@drawable/ic_outline_access_time_24"
                 android:contentDescription="@string/logo_time" />
@@ -55,9 +54,8 @@
         <ImageButton
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:id="@+id/button"
+            android:id="@+id/place_btn"
             android:src="@drawable/ic_outline_meeting_room_24"
-            android:onClick="showNumberPicker"
             android:background="@color/white"
             android:contentDescription="@string/logo_room" />
 

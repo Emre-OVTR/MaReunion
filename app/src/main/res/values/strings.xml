@@ -19,6 +19,8 @@
     <string name="logo_time">logo_time</string>
     <string name="room_request">Veuillez choisir une salle</string>
     <string name="time_choose">Veuillez choisir une heure</string>
+    <string name="add_one_participant">Veuillez ajouter un participant</string>
+    <string name="object_of_meeting">Veuillez définir l\'objet de la réunion</string>
 
 
 </resources>
