@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 import android.widget.NumberPicker;
 import android.widget.TimePicker;
 
@@ -27,6 +29,7 @@ import emre.turhal.mareunion.Utils.TimeUtils;
 import emre.turhal.mareunion.di.DI;
 import emre.turhal.mareunion.events.FilterMeetingEventByPlace;
 import emre.turhal.mareunion.events.FilterMeetingEventByTime;
+import emre.turhal.mareunion.model.Meeting;
 import emre.turhal.mareunion.service.MeetingApiService;
 
 public class
@@ -36,14 +39,14 @@ MainActivity extends AppCompatActivity {
     @BindView(R.id.my_toolbar)
     Toolbar mToolbar;
 
-    @BindView(R.id.container)
-    ViewPager mViewPager;
+
+
 
 
 
     int mHour, mMinute;
-    ListMeetingPagerAdapter mPagerAdapter;
     private MeetingApiService mApiService;
+    private MeetingFragment mMeetingFragment;
 
 
 
@@ -60,9 +63,21 @@ MainActivity extends AppCompatActivity {
 
         Drawable drawable = ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_baseline_filter_list_24);
         mToolbar.setOverflowIcon(drawable);
-        mPagerAdapter = new ListMeetingPagerAdapter(getSupportFragmentManager());
-        mViewPager.setAdapter(mPagerAdapter);
 
+        this.configureAndShowMainFragment();
+
+    }
+
+    private void configureAndShowMainFragment(){
+
+        mMeetingFragment = (MeetingFragment) getSupportFragmentManager().findFragmentById(R.id.container);
+
+        if (mMeetingFragment == null) {
+            mMeetingFragment = new MeetingFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.container, mMeetingFragment)
+                    .commit();
+        }
     }
 
     @Override
@@ -77,9 +92,6 @@ MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
             case R.id.filter_list:
-
-
-
 
                 TimePickerDialog timePickerDialog = new TimePickerDialog(this,
                         new TimePickerDialog.OnTimeSetListener() {
@@ -105,7 +117,11 @@ MainActivity extends AppCompatActivity {
 
             case R.id.no_filter:
 
-                mViewPager.setAdapter(mPagerAdapter);
+                mMeetingFragment.onResume();
+
+
+
+
         }
         return super.onOptionsItemSelected(item);
     }
