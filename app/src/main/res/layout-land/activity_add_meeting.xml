@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controller.AddMeetingActivity">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/appbar"
+        tools:ignore="MissingConstraints">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/my_toolbar2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#2196F3">
+
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/first_linear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@id/appbar"
+        app:layout_constraintTop_toBottomOf="@id/appbar"
+        >
+
+
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:id="@+id/time_btn"
+                android:background="@color/white"
+                android:src="@drawable/ic_outline_access_time_24"
+                android:contentDescription="@string/logo_time" />
+
+            <EditText
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/in_time"
+                android:hint="@string/time_select"
+                android:focusable="false"
+                android:inputType="time"/>
+
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:id="@+id/place_btn"
+            android:src="@drawable/ic_outline_meeting_room_24"
+            android:background="@color/white"
+            android:contentDescription="@string/logo_room" />
+
+        <EditText
+            android:id="@+id/in_place"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:inputType="text"
+            android:hint="@string/select_a_room" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/second_linear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        android:layout_marginTop="50dp"
+        app:layout_constraintStart_toStartOf="@id/first_linear"
+        app:layout_constraintTop_toBottomOf="@id/first_linear"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_outline_person_outline_24"
+            android:contentDescription="@string/participant_logo" />
+
+        <EditText
+            android:id="@+id/participant"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="@string/enter_mail_participants"
+            android:autofillHints="Entrez E-mail" />
+
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_outline_person_outline_24"
+            android:contentDescription="@string/participant_logo" />
+
+        <EditText
+            android:id="@+id/participant2"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="@string/enter_mail_participants"
+            android:autofillHints="" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/third_linear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        android:layout_marginTop="50dp"
+        app:layout_constraintStart_toStartOf="@id/second_linear"
+        app:layout_constraintTop_toBottomOf="@id/second_linear"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_outline_person_outline_24"
+            android:contentDescription="@string/participant_logo" />
+
+        <EditText
+            android:id="@+id/participant3"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="@string/enter_mail_participants"/>
+
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_outline_person_outline_24"
+            android:contentDescription="@string/participant_logo" />
+
+        <EditText
+            android:id="@+id/participant4"
+            android:layout_width="150dp"
+            android:inputType="textEmailAddress"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_mail_participants" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/last_linear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintStart_toEndOf="@id/first_linear"
+        app:layout_constraintTop_toBottomOf="@+id/appbar"
+
+
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_outline_add_comment_24"
+            android:contentDescription="@string/comment_image" />
+
+        <EditText
+            android:id="@+id/in_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapWords"
+            android:hint="@string/meeting_object"/>
+    </LinearLayout>
+
+
+
+    <Button
+        android:id="@+id/create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="50dp"
+
+        android:backgroundTint="#70B7EF"
+        android:padding="30dp"
+        android:text="@string/save_btn"
+        app:layout_constraintTop_toBottomOf="@id/last_linear"
+        app:layout_constraintStart_toStartOf="@id/last_linear"
+        tools:ignore="MissingConstraints" />
+</android.support.constraint.ConstraintLayout>
