@@ -70,7 +70,6 @@ public class AddMeetingActivity extends AppCompatActivity {
     }
 
 
-
     @OnClick({R.id.time_btn, R.id.in_time})
     public void showTimePicker(View view) {
 
@@ -100,22 +99,35 @@ public class AddMeetingActivity extends AppCompatActivity {
 
         if (txtTime.getText().toString().equals("")) {
             ToastUtils.showToastLong(getString(R.string.time_choose), getApplicationContext());
-        } else if (txtPlace.getText().toString().equals("")) {
+            } else if (txtPlace.getText().toString().equals("")) {
             ToastUtils.showToastLong(getString(R.string.room_request), getApplicationContext());
-        } else if (txtParticipant.getText().toString().equals("") &
+            } else if (txtParticipant.getText().toString().equals("") &
                 txtParticipant2.getText().toString().equals("") &
                 txtParticipant3.getText().toString().equals("") &
                 txtParticipant4.getText().toString().equals("")) {
             ToastUtils.showToastLong(getString(R.string.add_one_participant), getApplicationContext());
-        } else if (txtComment.getText().toString().equals("")) {
+            } else if (txtComment.getText().toString().equals("")) {
             ToastUtils.showToastLong(getString(R.string.object_of_meeting), getApplicationContext());
-        } else {
+            } else {
 
             List<String> nP = new ArrayList<>();
-            nP.add(txtParticipant.getText().toString());
-            nP.add(txtParticipant2.getText().toString());
-            nP.add(txtParticipant3.getText().toString());
-            nP.add(txtParticipant4.getText().toString());
+
+            if (txtParticipant.getText().toString().length() != 0) {
+                nP.add(txtParticipant.getText().toString());
+            }
+
+            if (txtParticipant2.getText().toString().length() != 0) {
+                nP.add(txtParticipant2.getText().toString());
+            }
+
+            if (txtParticipant3.getText().toString().length() != 0) {
+                nP.add(txtParticipant3.getText().toString());
+            }
+
+            if (txtParticipant4.getText().toString().length() != 0) {
+              nP.add(txtParticipant4.getText().toString());
+            }
+
 
             Meeting meeting = new Meeting(System.currentTimeMillis(),
                     txtTime.getText().toString(),
@@ -128,6 +140,11 @@ public class AddMeetingActivity extends AppCompatActivity {
             finish();
         }
     }
+
+
+
+
+
 
 
     @Override
