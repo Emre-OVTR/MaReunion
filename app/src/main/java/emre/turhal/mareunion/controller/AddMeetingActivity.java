@@ -15,6 +15,7 @@ import android.widget.ImageButton;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,25 +30,25 @@ import emre.turhal.mareunion.service.MeetingApiService;
 public class AddMeetingActivity extends AppCompatActivity {
 
 
-    @BindView(R.id.my_toolbar2)
+    @BindView((R.id.my_toolbar2))
     Toolbar mToolbar;
-    @BindView(R.id.in_time)
+    @BindView((R.id.in_time))
     EditText txtTime;
-    @BindView(R.id.in_place)
+    @BindView((R.id.in_place))
     EditText txtPlace;
-    @BindView(R.id.in_comment)
+    @BindView((R.id.in_comment))
     EditText txtComment;
-    @BindView(R.id.participant)
+    @BindView((R.id.participant))
     EditText txtParticipant;
-    @BindView(R.id.participant2)
+    @BindView((R.id.participant2))
     EditText txtParticipant2;
-    @BindView(R.id.participant3)
+    @BindView((R.id.participant3))
     EditText txtParticipant3;
-    @BindView(R.id.participant4)
+    @BindView((R.id.participant4))
     EditText txtParticipant4;
-    @BindView(R.id.time_btn)
+    @BindView((R.id.time_btn))
     ImageButton mTimeBtn;
-    @BindView(R.id.place_btn)
+    @BindView((R.id.place_btn))
     ImageButton mPlaceBtn;
 
 
@@ -60,7 +61,7 @@ public class AddMeetingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_meeting);
         ButterKnife.bind(this);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         mApiService = DI.getMeetingApiService();
     }
 
@@ -110,6 +111,7 @@ public class AddMeetingActivity extends AppCompatActivity {
             ToastUtils.showToastLong(getString(R.string.object_of_meeting), getApplicationContext());
             } else {
 
+
             List<String> nP = new ArrayList<>();
 
             if (txtParticipant.getText().toString().length() != 0) {
@@ -140,11 +142,6 @@ public class AddMeetingActivity extends AppCompatActivity {
             finish();
         }
     }
-
-
-
-
-
 
 
     @Override

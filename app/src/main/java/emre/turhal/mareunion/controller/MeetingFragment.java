@@ -14,6 +14,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
+import java.util.Objects;
 
 import emre.turhal.mareunion.R;
 import emre.turhal.mareunion.di.DI;
@@ -27,14 +28,10 @@ public class MeetingFragment extends Fragment {
 
     private MeetingApiService mApiService;
     private List<Meeting> mMeetingList;
-    private RecyclerView mRecyclerView;
     private MeetingRecyclerViewAdapter mMeetingRecyclerViewAdapter;
 
 
-    public static MeetingFragment newInstance() {
-        MeetingFragment fragment = new MeetingFragment();
-        return fragment;
-    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,13 +43,13 @@ public class MeetingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frament_meeting_list, container, false);
         Context context = view.getContext();
-        mRecyclerView = (RecyclerView) view;
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+        RecyclerView recyclerView = (RecyclerView) view;
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.addItemDecoration(new DividerItemDecoration(Objects.requireNonNull(getContext()), DividerItemDecoration.VERTICAL));
 
 
         mMeetingRecyclerViewAdapter = new MeetingRecyclerViewAdapter(mMeetingList);
-        mRecyclerView.setAdapter(mMeetingRecyclerViewAdapter);
+        recyclerView.setAdapter(mMeetingRecyclerViewAdapter);
         return view;
     }
 
@@ -96,9 +93,6 @@ public class MeetingFragment extends Fragment {
 
 
     }
-
-
-
 
 }
 

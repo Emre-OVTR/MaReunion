@@ -1,10 +1,9 @@
 package emre.turhal.mareunion.controller;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.widget.NumberPicker;
 
@@ -15,6 +14,7 @@ public class NumberPickerDialog extends DialogFragment {
 
 
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
@@ -27,32 +27,13 @@ public class NumberPickerDialog extends DialogFragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Sélectionnez une salle:");
-        //builder.setMessage("Sélectionnez une salle:");
 
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                valueChangeListener.onValueChange(numberPicker,
-                        numberPicker.getValue(), numberPicker.getValue());
-
-            }
-        });
-
-        builder.setNegativeButton("ANNULER", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //valueChangeListener.onValueChange(numberPicker,
-                  //    numberPicker.getValue(), numberPicker.getValue());
-            }
-        });
-
+        builder.setPositiveButton("OK", (dialog, which) -> valueChangeListener.onValueChange(numberPicker,
+                numberPicker.getValue(), numberPicker.getValue()));
         builder.setView(numberPicker);
         return builder.create();
     }
 
-    public NumberPicker.OnValueChangeListener getValueChangeListener() {
-        return valueChangeListener;
-    }
 
     public void setValueChangeListener(NumberPicker.OnValueChangeListener valueChangeListener) {
         this.valueChangeListener = valueChangeListener;

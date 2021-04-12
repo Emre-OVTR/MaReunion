@@ -1,6 +1,7 @@
 package emre.turhal.mareunion.controller;
 
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -25,14 +26,17 @@ public class MeetingRecyclerViewAdapter extends RecyclerView.Adapter<MeetingRecy
 
     private  List<Meeting> mMeetings;
 
-    int[] images = new int[] {R.drawable.ic_baseline_circle_24, R.drawable.ic_baseline_circle_24_orange, R.drawable.ic_baseline_circle_24_yellow, R.drawable.ic_baseline_circle_24_green};
+    int[] images = new int[] {R.drawable.ic_baseline_circle_24,
+                              R.drawable.ic_baseline_circle_24_orange,
+                              R.drawable.ic_baseline_circle_24_yellow,
+                              R.drawable.ic_baseline_circle_24_green};
 
 
     public MeetingRecyclerViewAdapter(List<Meeting> items) {
         mMeetings = items;
-
     }
 
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -53,12 +57,7 @@ public class MeetingRecyclerViewAdapter extends RecyclerView.Adapter<MeetingRecy
         int imageId =(int)(Math.random() * images.length);
         holder.mColorCircle.setBackgroundResource(images[imageId]);
 
-        holder.mDeleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EventBus.getDefault().post(new DeleteMeetingEvent(meeting));
-            }
-        });
+        holder.mDeleteButton.setOnClickListener(v -> EventBus.getDefault().post(new DeleteMeetingEvent(meeting)));
     }
 
     @Override
@@ -66,19 +65,19 @@ public class MeetingRecyclerViewAdapter extends RecyclerView.Adapter<MeetingRecy
         return mMeetings.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.item_list_color)
+        @BindView((R.id.item_list_color))
         ImageView mColorCircle;
-        @BindView(R.id.item_list_hour)
+        @BindView((R.id.item_list_hour))
         public TextView mMeetingHour;
-        @BindView(R.id.item_list_place)
+        @BindView((R.id.item_list_place))
         public TextView mMeetingPlace;
-        @BindView(R.id.item_list_object)
+        @BindView((R.id.item_list_object))
         public TextView mMeetingObject;
-        @BindView(R.id.item_list_delete_btn)
+        @BindView((R.id.item_list_delete_btn))
         public ImageButton mDeleteButton;
-        @BindView(R.id.participants_email_meeting_list)
+        @BindView((R.id.participants_email_meeting_list))
         public TextView mParticipants;
 
         public ViewHolder(View view) {
@@ -93,12 +92,5 @@ public class MeetingRecyclerViewAdapter extends RecyclerView.Adapter<MeetingRecy
 
         mMeetings = newMeetings;
         notifyDataSetChanged();
-
-
-
-
-
     }
-
-
 }

@@ -8,13 +8,13 @@ public class Meeting {
 
     private long id;
 
-    private String hour;
+    private final String hour;
 
-    private String place;
+    private final String place;
 
-    private String object;
+    private final String object;
 
-    private List<String> participants;
+    private final List<String> participants;
 
 
 
@@ -42,34 +42,17 @@ public class Meeting {
         return hour;
     }
 
-    public void setHour(String hour) {
-        this.hour = hour;
-    }
-
     public String getPlace() {
         return place;
-    }
-
-    public void setPlace(String place) {
-        this.place = place;
     }
 
     public String getObject() {
         return object;
     }
 
-    public void setObject(String object) {
-        this.object = object;
-    }
-
     public List<String> getParticipants() {
         return participants;
     }
-
-    public void setParticipants(List<String> participants) {
-        this.participants = participants;
-    }
-
 
 
 }
