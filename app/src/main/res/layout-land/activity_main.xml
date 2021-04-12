@@ -28,8 +28,8 @@
         android:id="@+id/add_meeting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="580dp"
-        android:layout_marginTop="300dp"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="30dp"
         app:backgroundTint="@color/red"
         app:srcCompat="@drawable/ic_meeting_add_white_24dp"
         android:contentDescription="@string/add_meeting_fab" />
