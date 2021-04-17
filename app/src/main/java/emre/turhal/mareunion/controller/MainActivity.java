@@ -73,7 +73,7 @@ MainActivity extends AppCompatActivity {
 
 
         switch (item.getItemId()){
-            case (R.id.filter_list):
+            case (R.id.filter_time):
 
                 TimePickerDialog timePickerDialog = new TimePickerDialog(this,
                         (view, hourOfDay, minute) -> EventBus.getDefault().post(new FilterMeetingEventByTime(TimeUtils.timePickerToString(hourOfDay, minute))), mHour, mMinute, true);
@@ -90,7 +90,7 @@ MainActivity extends AppCompatActivity {
 
             case (R.id.no_filter):
 
-                mMeetingFragment.onResume();
+                mMeetingFragment.initList();
 
 
 

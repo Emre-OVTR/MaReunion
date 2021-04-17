@@ -1,6 +1,6 @@
 package emre.turhal.mareunion.Utils;
 
-public class TimeUtils {
+public abstract class TimeUtils {
 
     public static String timePickerToString(int hour, int minute) {
         String hourformated;

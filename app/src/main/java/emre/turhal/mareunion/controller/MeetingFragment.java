@@ -53,7 +53,7 @@ public class MeetingFragment extends Fragment {
         return view;
     }
 
-    private void initList() {
+    public void initList() {
         mMeetingList = mApiService.getMeetings();
         mMeetingRecyclerViewAdapter.updateMeeting(mMeetingList);
     }

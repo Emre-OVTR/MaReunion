@@ -11,7 +11,7 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/filter_list"
+        android:id="@+id/filter_time"
         android:title="@string/filter_list"
         app:showAsAction="never" />
 
