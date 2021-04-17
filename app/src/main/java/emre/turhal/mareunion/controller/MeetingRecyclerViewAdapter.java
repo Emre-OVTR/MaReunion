@@ -48,9 +48,9 @@ public class MeetingRecyclerViewAdapter extends RecyclerView.Adapter<MeetingRecy
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         Meeting meeting = mMeetings.get(position);
-        holder.mMeetingHour.setText(meeting.getHour());
-        holder.mMeetingPlace.setText(meeting.getPlace());
-        holder.mMeetingObject.setText(meeting.getObject());
+        holder.mMeetingHour.setText(meeting.getTime());
+        holder.mMeetingPlace.setText(meeting.getRoom());
+        holder.mMeetingObject.setText(meeting.getSubject());
         holder.mParticipants.setText(String.join(", ", meeting.getParticipants()));
 
 

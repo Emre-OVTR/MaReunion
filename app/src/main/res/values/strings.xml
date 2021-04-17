@@ -3,7 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="filter_list">Filtrer par heure</string>
-    <string name="select_a_room">Chosir le lieu</string>
+    <string name="select_a_room">Choisir le lieu</string>
     <string name="filter_place">Filtrer par lieu</string>
     <string name="no_filter">Toutes les réunions</string>
     <string name="save_btn">Sauvegarder</string>

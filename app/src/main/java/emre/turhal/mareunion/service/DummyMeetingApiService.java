@@ -42,7 +42,7 @@ public class DummyMeetingApiService implements MeetingApiService{
 
 //          Log.e("tag", meeting.getHour());
 
-            if (meeting.getHour().equals(time)){
+            if (meeting.getTime().equals(time)){
 
                 filteredMeetings.add(meeting);
 
@@ -61,7 +61,7 @@ public class DummyMeetingApiService implements MeetingApiService{
 
         for (Meeting meeting : meetings){
 
-            if (meeting.getPlace().equals(place)){
+            if (meeting.getRoom().equals(place)){
                 placeFilteredMeetings.add(meeting);
             }
         }

@@ -57,15 +57,15 @@ public class MeetingServiceTest {
 
     @Test
     public void filterMeetingsByPlace() {
-        String expectedMeetings = service.getMeetings().get(2).getPlace();
-        assertEquals(service.filterMeetingsByPlace("Salle H").get(0).getPlace(), expectedMeetings);
+        String expectedMeetings = service.getMeetings().get(2).getRoom();
+        assertEquals(service.filterMeetingsByPlace("Salle H").get(0).getRoom(), expectedMeetings);
     }
 
 
     @Test
     public void filterMeetingsByTime(){
-        String expectedMeetings = service.getMeetings().get(1).getHour();
-        assertEquals(service.filterMeetingsByTime("15:00").get(0).getHour(), expectedMeetings);
+        String expectedMeetings = service.getMeetings().get(1).getTime();
+        assertEquals(service.filterMeetingsByTime("15:00").get(0).getTime(), expectedMeetings);
     }
 
 

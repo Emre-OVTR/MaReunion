@@ -8,22 +8,22 @@ public class Meeting {
 
     private long id;
 
-    private final String hour;
+    private final String time;
 
-    private final String place;
+    private final String room;
 
-    private final String object;
+    private final String subject;
 
     private final List<String> participants;
 
 
 
 
-    public Meeting(long id, String hour, String place, String object, List<String> participants) {
+    public Meeting(long id, String time, String room, String subject, List<String> participants) {
         this.id = id;
-        this.hour = hour;
-        this.place = place;
-        this.object = object;
+        this.time = time;
+        this.room = room;
+        this.subject = subject;
         this.participants = participants;
     }
 
@@ -38,16 +38,16 @@ public class Meeting {
         this.id = id;
     }
 
-    public String getHour() {
-        return hour;
+    public String getTime() {
+        return time;
     }
 
-    public String getPlace() {
-        return place;
+    public String getRoom() {
+        return room;
     }
 
-    public String getObject() {
-        return object;
+    public String getSubject() {
+        return subject;
     }
 
     public List<String> getParticipants() {
