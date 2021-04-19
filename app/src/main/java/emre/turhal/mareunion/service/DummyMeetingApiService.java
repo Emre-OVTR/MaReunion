@@ -34,7 +34,7 @@ public class DummyMeetingApiService implements MeetingApiService{
     @Override
     public List<Meeting> filterMeetingsByTime(String time) {
 
-        List<Meeting> filteredMeetings = new ArrayList<>();
+        List<Meeting> timefilteredMeetings = new ArrayList<>();
 
 
 
@@ -44,14 +44,14 @@ public class DummyMeetingApiService implements MeetingApiService{
 
             if (meeting.getTime().equals(time)){
 
-                filteredMeetings.add(meeting);
+                timefilteredMeetings.add(meeting);
 
 
             }
 
 
         }
-        return filteredMeetings;
+        return timefilteredMeetings;
     }
 
     @Override
