@@ -83,7 +83,7 @@ public class MeetingFragment extends Fragment {
     }
 
     @Subscribe
-    public void onFilterMeeting(FilterMeetingEventByTime event) {
+    public void onFilterMeetingByTime(FilterMeetingEventByTime event) {
         mMeetingRecyclerViewAdapter.updateMeeting(mApiService.filterMeetingsByTime(event.timeSelected));
     }
 
