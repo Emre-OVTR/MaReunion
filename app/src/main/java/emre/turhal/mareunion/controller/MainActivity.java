@@ -12,6 +12,8 @@ import android.widget.NumberPicker;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.util.Calendar;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -27,7 +29,7 @@ MainActivity extends AppCompatActivity {
     @BindView((R.id.my_toolbar))
     Toolbar mToolbar;
 
-    int mHour, mMinute;
+
     private MeetingFragment mMeetingFragment;
 
 
@@ -70,10 +72,17 @@ MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected( MenuItem item) {
 
+        int mHour, mMinute;
+        final Calendar c = Calendar.getInstance();
+        mHour = c.get(Calendar.HOUR_OF_DAY);
+        mMinute = c.get(Calendar.MINUTE);
 
 
         switch (item.getItemId()){
+
+
             case (R.id.filter_time):
+
 
                 TimePickerDialog timePickerDialog = new TimePickerDialog(this,
                         (view, hourOfDay, minute) -> EventBus.getDefault().post(new FilterMeetingEventByTime(TimeUtils.timePickerToString(hourOfDay, minute))), mHour, mMinute, true);
