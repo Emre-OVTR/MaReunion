@@ -80,7 +80,6 @@ public class MainActivityTest {
         onView(withText("Toutes les réunions")).perform(click());
         onView(ViewMatchers.withId(R.id.list_meetings)).check(withItemCount(3));
 
-        // voir si on peut changer l'heure
     }
 
     @Test
@@ -101,7 +100,7 @@ public class MainActivityTest {
         onView(withText("Toutes les réunions")).perform(click());
         onView(ViewMatchers.withId(R.id.list_meetings)).check(withItemCount(3));
 
-        // voir si on peut changer la salle
+
 
     }
 

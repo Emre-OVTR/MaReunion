@@ -30,7 +30,7 @@ import static org.junit.Assert.*;
 public class MeetingsListTest {
 
 
-    //private static int ITEMS_COUNT = 3;
+
     private MainActivity mActivity;
 
     @Rule
