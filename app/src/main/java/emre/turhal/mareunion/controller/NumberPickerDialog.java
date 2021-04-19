@@ -9,7 +9,7 @@ import android.widget.NumberPicker;
 
 public class NumberPickerDialog extends DialogFragment {
     private NumberPicker.OnValueChangeListener valueChangeListener;
-    public static String[] pickerVals = new String[] {"Salle A", "Salle B", "Sale C", "Salle D", "Salle E", "Salle F", "Salle G", "Salle H", "Salle I", "Salle J"};
+    public static String[] pickerVals = new String[] {"Salle A", "Salle B", "Salle C", "Salle D", "Salle E", "Salle F", "Salle G", "Salle H", "Salle I", "Salle J"};
 
 
 
