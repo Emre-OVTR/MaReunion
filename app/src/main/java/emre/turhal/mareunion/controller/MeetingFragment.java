@@ -20,7 +20,7 @@ import emre.turhal.mareunion.R;
 import emre.turhal.mareunion.di.DI;
 import emre.turhal.mareunion.events.DeleteMeetingEvent;
 import emre.turhal.mareunion.events.FilterMeetingEventByPlace;
-import emre.turhal.mareunion.events.FilterMeetingEventByTime;
+import emre.turhal.mareunion.events.FilterMeetingEventByDate;
 import emre.turhal.mareunion.model.Meeting;
 import emre.turhal.mareunion.service.MeetingApiService;
 
@@ -83,8 +83,8 @@ public class MeetingFragment extends Fragment {
     }
 
     @Subscribe
-    public void onFilterMeetingByTime(FilterMeetingEventByTime event) {
-        mMeetingRecyclerViewAdapter.updateMeeting(mApiService.filterMeetingsByTime(event.timeSelected));
+    public void onFilterMeetingByDate(FilterMeetingEventByDate event) {
+        mMeetingRecyclerViewAdapter.updateMeeting(mApiService.filterMeetingsByDate(event.dateSelected));
     }
 
     @Subscribe

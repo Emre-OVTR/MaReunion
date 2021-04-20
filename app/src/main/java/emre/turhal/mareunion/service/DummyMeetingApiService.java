@@ -32,9 +32,9 @@ public class DummyMeetingApiService implements MeetingApiService{
     }
 
     @Override
-    public List<Meeting> filterMeetingsByTime(String time) {
+    public List<Meeting> filterMeetingsByDate(String date) {
 
-        List<Meeting> timefilteredMeetings = new ArrayList<>();
+        List<Meeting> datefilteredMeetings = new ArrayList<>();
 
 
 
@@ -42,16 +42,16 @@ public class DummyMeetingApiService implements MeetingApiService{
 
 
 
-            if (meeting.getTime().equals(time)){
+            if (meeting.getDate().equals(date)){
 
-                timefilteredMeetings.add(meeting);
+                datefilteredMeetings.add(meeting);
 
 
             }
 
 
         }
-        return timefilteredMeetings;
+        return datefilteredMeetings;
     }
 
     @Override

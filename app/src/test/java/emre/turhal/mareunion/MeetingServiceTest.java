@@ -48,7 +48,7 @@ public class MeetingServiceTest {
 
     @Test
     public void addMeeting() {
-        Meeting meetingToAdded = new Meeting(7, "12:00", "Salle F",
+        Meeting meetingToAdded = new Meeting(7, "12:00","25/04/2021", "Salle F",
                 "TEST", DummyMeetingGenerator.participants);
         service.createMeeting(meetingToAdded);
         assertTrue(service.getMeetings().contains(meetingToAdded));
@@ -63,9 +63,9 @@ public class MeetingServiceTest {
 
 
     @Test
-    public void filterMeetingsByTime(){
+    public void filterMeetingsByDate(){
         String expectedMeetings = service.getMeetings().get(1).getTime();
-        assertEquals(service.filterMeetingsByTime("15:00").get(0).getTime(), expectedMeetings);
+        assertEquals(service.filterMeetingsByDate("14/05/2021").get(0).getTime(), expectedMeetings);
     }
 
 

@@ -10,6 +10,8 @@ public class Meeting {
 
     private final String time;
 
+    private final String date;
+
     private final String room;
 
     private final String subject;
@@ -19,9 +21,10 @@ public class Meeting {
 
 
 
-    public Meeting(long id, String time, String room, String subject, List<String> participants) {
+    public Meeting(long id, String time, String date, String room, String subject, List<String> participants) {
         this.id = id;
         this.time = time;
+        this.date = date;
         this.room = room;
         this.subject = subject;
         this.participants = participants;
@@ -54,7 +57,9 @@ public class Meeting {
         return participants;
     }
 
-
+    public String getDate() {
+        return date;
+    }
 }
 
 

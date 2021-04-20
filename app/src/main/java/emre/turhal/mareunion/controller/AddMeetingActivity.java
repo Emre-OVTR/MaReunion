@@ -1,5 +1,6 @@
 package emre.turhal.mareunion.controller;
 
+import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,10 +8,10 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.format.DateFormat;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageButton;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -34,6 +35,8 @@ public class AddMeetingActivity extends AppCompatActivity {
     Toolbar mToolbar;
     @BindView((R.id.in_time))
     EditText txtTime;
+    @BindView((R.id.in_date))
+    EditText txtDate;
     @BindView((R.id.in_place))
     EditText txtPlace;
     @BindView((R.id.in_comment))
@@ -46,13 +49,12 @@ public class AddMeetingActivity extends AppCompatActivity {
     EditText txtParticipant3;
     @BindView((R.id.participant4))
     EditText txtParticipant4;
-    @BindView((R.id.time_btn))
-    ImageButton mTimeBtn;
-    @BindView((R.id.place_btn))
-    ImageButton mPlaceBtn;
+
+
 
 
     private MeetingApiService mApiService;
+    private static CharSequence dateText;
 
 
     @Override
@@ -86,6 +88,28 @@ public class AddMeetingActivity extends AppCompatActivity {
 
     }
 
+    @OnClick({R.id.date_btn, R.id.in_date})
+    public void showDatePicker(View view) {
+
+        final Calendar calendar = Calendar.getInstance();
+
+        int YEAR = calendar.get(Calendar.YEAR);
+        int MONTH = calendar.get(Calendar.MONTH);
+        int DATE = calendar.get(Calendar.DATE);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, (datePicker, year, month, date) -> {
+            Calendar calendar1 = Calendar.getInstance();
+            calendar1.set(Calendar.YEAR, year);
+            calendar1.set(Calendar.MONTH, month);
+            calendar1.set(Calendar.DATE, date);
+            dateText = DateFormat.format("dd/MM/yyyy", calendar1);
+            txtDate.setText(dateText);
+
+        }, YEAR, MONTH, DATE);
+        datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
+        datePickerDialog.show();
+    }
+
     @OnClick({R.id.place_btn, R.id.in_place})
     public void showNumberPicker(View view) {
         NumberPickerDialog newFragment = new NumberPickerDialog();
@@ -100,8 +124,8 @@ public class AddMeetingActivity extends AppCompatActivity {
 
         if (txtTime.getText().toString().equals("")) {
             ToastUtils.showToastLong(getString(R.string.time_choose), getApplicationContext());
-            } else if (txtPlace.getText().toString().equals("")) {
-            ToastUtils.showToastLong(getString(R.string.room_request), getApplicationContext());
+            } else if (txtDate.getText().toString().equals("")) {
+            ToastUtils.showToastLong(getString(R.string.date_choose), getApplicationContext());
             } else if (txtParticipant.getText().toString().equals("") &
                 txtParticipant2.getText().toString().equals("") &
                 txtParticipant3.getText().toString().equals("") &
@@ -109,8 +133,9 @@ public class AddMeetingActivity extends AppCompatActivity {
             ToastUtils.showToastLong(getString(R.string.add_one_participant), getApplicationContext());
             } else if (txtComment.getText().toString().equals("")) {
             ToastUtils.showToastLong(getString(R.string.object_of_meeting), getApplicationContext());
+            } else if (txtPlace.getText().toString().equals("")) {
+            ToastUtils.showToastLong(getString(R.string.room_request), getApplicationContext());
             } else {
-
 
             List<String> nP = new ArrayList<>();
 
@@ -133,6 +158,7 @@ public class AddMeetingActivity extends AppCompatActivity {
 
             Meeting meeting = new Meeting(System.currentTimeMillis(),
                     txtTime.getText().toString(),
+                    txtDate.getText().toString(),
                     txtPlace.getText().toString(),
                     txtComment.getText().toString(),
                     nP

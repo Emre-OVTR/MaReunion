@@ -1,11 +1,12 @@
 package emre.turhal.mareunion.controller;
 
-import android.app.TimePickerDialog;
+import android.app.DatePickerDialog;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.format.DateFormat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.NumberPicker;
@@ -18,9 +19,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import emre.turhal.mareunion.R;
-import emre.turhal.mareunion.Utils.TimeUtils;
+import emre.turhal.mareunion.events.FilterMeetingEventByDate;
 import emre.turhal.mareunion.events.FilterMeetingEventByPlace;
-import emre.turhal.mareunion.events.FilterMeetingEventByTime;
 
 public class
 MainActivity extends AppCompatActivity {
@@ -31,6 +31,7 @@ MainActivity extends AppCompatActivity {
 
 
     private MeetingFragment mMeetingFragment;
+    private static CharSequence dateText;
 
 
 
@@ -72,21 +73,33 @@ MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected( MenuItem item) {
 
-        int mHour, mMinute;
-        final Calendar c = Calendar.getInstance();
-        mHour = c.get(Calendar.HOUR_OF_DAY);
-        mMinute = c.get(Calendar.MINUTE);
-
 
         switch (item.getItemId()){
 
 
-            case (R.id.filter_time):
+
+            case (R.id.filter_date):
 
 
-                TimePickerDialog timePickerDialog = new TimePickerDialog(this,
-                        (view, hourOfDay, minute) -> EventBus.getDefault().post(new FilterMeetingEventByTime(TimeUtils.timePickerToString(hourOfDay, minute))), mHour, mMinute, true);
-                timePickerDialog.show();
+                final Calendar calendar = Calendar.getInstance();
+
+                int YEAR = calendar.get(Calendar.YEAR);
+                int MONTH = calendar.get(Calendar.MONTH);
+                int DATE = calendar.get(Calendar.DATE);
+
+                final DatePickerDialog datePickerDialog = new DatePickerDialog(this, (datePicker, year, month, date) -> {
+                    Calendar calendar1 = Calendar.getInstance();
+                    calendar1.set(Calendar.YEAR, year);
+                    calendar1.set(Calendar.MONTH, month);
+                    calendar1.set(Calendar.DATE, date);
+                    dateText = DateFormat.format("dd/MM/yyyy", calendar1);
+
+                    EventBus.getDefault().post(new FilterMeetingEventByDate(dateText.toString()));
+
+                }, YEAR, MONTH, DATE);
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
+                datePickerDialog.show();
+
                 return true;
 
             case (R.id.filter_place):

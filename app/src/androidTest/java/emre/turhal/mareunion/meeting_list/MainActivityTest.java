@@ -8,6 +8,7 @@ import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.view.InputDevice;
 import android.view.MotionEvent;
+import android.widget.DatePicker;
 import android.widget.NumberPicker;
 import android.widget.TimePicker;
 
@@ -26,6 +27,7 @@ import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard
 import static android.support.test.espresso.action.ViewActions.pressBack;
 import static android.support.test.espresso.action.ViewActions.replaceText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.contrib.PickerActions.setDate;
 import static android.support.test.espresso.contrib.PickerActions.setTime;
 import static android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -42,8 +44,13 @@ public class MainActivityTest {
         mActivityRule = new ActivityTestRule<>(MainActivity.class);
     }
 
-    public static void setTestTime() {
+    public static void setTestDate() {
 
+        onView(isAssignableFrom(DatePicker.class)).perform(setDate(2021,05,11));
+        onView(withId(android.R.id.button1)).perform(click());
+    }
+
+    public static void setTestTime() {
         onView(isAssignableFrom(TimePicker.class)).perform(setTime(14,00));
         onView(withId(android.R.id.button1)).perform(click());
     }
@@ -69,11 +76,11 @@ public class MainActivityTest {
     }
 
     @Test
-    public void filterByTimeAndGetBackAllMeetingsWithSuccess(){
+    public void filterByDateAndGetBackAllMeetingsWithSuccess(){
 
         openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext());
-        onView(withText("Filtrer par heure")).perform(click());
-        setTestTime();
+        onView(withText("Filtrer par date")).perform(click());
+        setTestDate();
         onView(ViewMatchers.withId(R.id.list_meetings)).check(withItemCount(1));
 
         openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext());
@@ -111,10 +118,8 @@ public class MainActivityTest {
         onView(withId(R.id.time_btn)).perform(click());
         setTestTime();
 
-        onView(withId(R.id.place_btn)).perform(click());
-        setPlace();
-        onView(withId(android.R.id.button1)).perform(click());
-
+        onView(withId(R.id.date_btn)).perform(click());
+        setTestDate();
 
 
         onView(withId(R.id.participant)).perform(replaceText("test@test.com"), closeSoftKeyboard());
@@ -122,6 +127,10 @@ public class MainActivityTest {
         onView(withId(R.id.participant2)).perform(replaceText("test02@test.com"), closeSoftKeyboard());
 
         onView(withId(R.id.in_comment)).perform(replaceText("TEST"), closeSoftKeyboard());
+
+        onView(withId(R.id.place_btn)).perform(click());
+        setPlace();
+        onView(withId(android.R.id.button1)).perform(click());
 
         onView(withId(R.id.create)).perform(click());
 

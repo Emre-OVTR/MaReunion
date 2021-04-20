@@ -52,20 +52,21 @@
 
 
         <ImageButton
-            android:id="@+id/place_btn"
+            android:id="@+id/date_btn"
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_outline_meeting_room_24"
+            android:src="@drawable/ic_outline_date_range_24"
             android:background="@color/white"
             android:contentDescription="@string/logo_room" />
 
         <EditText
-            android:id="@+id/in_place"
+
+            android:id="@+id/in_date"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:focusable="false"
-            android:inputType="text"
-            android:hint="@string/select_a_room" />
+            android:inputType="datetime"
+            android:hint="@string/choose_date" />
 
     </LinearLayout>
 
@@ -153,26 +154,44 @@
 
     <LinearLayout
         android:id="@+id/last_linear"
+        tools:ignore="MissingConstraints"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints"
         android:layout_marginTop="50dp"
         app:layout_constraintStart_toStartOf="@id/third_linear"
         app:layout_constraintTop_toBottomOf="@id/third_linear"
         android:orientation="horizontal">
 
-        <ImageView
+        <ImageButton
+
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:src="@drawable/ic_outline_add_comment_24"
-            android:contentDescription="@string/comment_image" />
+            android:background="@color/white"
+            android:contentDescription="@string/logo_room"/>
 
         <EditText
             android:id="@+id/in_comment"
-            android:layout_width="match_parent"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:inputType="textCapWords"
             android:hint="@string/meeting_object"/>
+
+        <ImageButton
+            android:id="@+id/place_btn"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_outline_meeting_room_24"
+            android:background="@color/white"
+            android:contentDescription="@string/logo_room" />
+
+        <EditText
+            android:id="@+id/in_place"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:inputType="text"
+            android:hint="@string/select_a_room"/>
     </LinearLayout>
 
 
