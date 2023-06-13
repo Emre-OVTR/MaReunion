@@ -9,6 +9,6 @@
 -  Gestion de l’affichage responsive sur toutes les tailles de téléphone et de tablette
 Android, en modes portrait et paysage.
 
-Design Pattern : MVC / Framework : Android SDK / Data persistence : NO / UI Framwork : Android View System / UI Tests : Espresso / Unit Tests : JUnit / Libraries : - ButterKnife - Glide - EventBu
+Design Pattern : MVC / Framework : Android SDK / Data persistence : NO / UI Framwork : Android View System / UI Tests : Espresso / Unit Tests : JUnit / Libraries : - ButterKnife - Glide - EventBus
 
 
