@@ -1,4 +1,4 @@
-package emre.turhal.mareunion.controller;
+package emre.turhal.mareunion.ui.meetings_list;
 
 import android.os.Build;
 import android.support.annotation.NonNull;

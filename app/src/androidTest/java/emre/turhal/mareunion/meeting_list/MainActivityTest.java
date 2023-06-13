@@ -16,7 +16,7 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import emre.turhal.mareunion.R;
-import emre.turhal.mareunion.controller.MainActivity;
+import emre.turhal.mareunion.ui.MainActivity;
 
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
 import static android.support.test.espresso.Espresso.onView;

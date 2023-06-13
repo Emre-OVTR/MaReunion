@@ -1,4 +1,4 @@
-package emre.turhal.mareunion.controller;
+package emre.turhal.mareunion.ui;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

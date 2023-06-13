@@ -1,4 +1,4 @@
-package emre.turhal.mareunion.controller;
+package emre.turhal.mareunion.ui;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;

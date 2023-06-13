@@ -1,4 +1,4 @@
-package emre.turhal.mareunion.controller;
+package emre.turhal.mareunion.ui;
 
 import android.app.DatePickerDialog;
 import android.graphics.drawable.Drawable;
@@ -21,6 +21,7 @@ import butterknife.OnClick;
 import emre.turhal.mareunion.R;
 import emre.turhal.mareunion.events.FilterMeetingEventByDate;
 import emre.turhal.mareunion.events.FilterMeetingEventByPlace;
+import emre.turhal.mareunion.ui.meetings_list.MeetingFragment;
 
 public class
 MainActivity extends AppCompatActivity {
